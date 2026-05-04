@@ -1,0 +1,1028 @@
+---
+// src/pages/services.astro
+// VWS services and pricing page
+// Linked from links.astro via /services
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services &amp; Pricing — Velocity Web Studio</title>
+    <meta
+      name="description"
+      content="Local business growth systems. GBP management, lead capture, reputation, paid ads. Plans from $497/mo."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="outer">
+      <div class="page">
+        <!-- TOPBAR -->
+        <div class="topbar">
+          <a href="/" class="back-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"
+              ><path
+                d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+              ></path></svg
+            >
+            Back
+          </a>
+          <span class="brand">Velocity <em>Web</em></span>
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle light/dark mode"
+          >
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"
+              ><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"
+              ></path></svg
+            >
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"
+              ><path
+                d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0-14a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1zm0 16a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1zm9-9a1 1 0 0 1 0 2h-1a1 1 0 1 1 0-2h1zM5 12a1 1 0 0 1-1 1H3a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1zm12.66-6.24a1 1 0 0 1 0 1.41l-.71.71a1 1 0 1 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 0zM7.05 17.66a1 1 0 0 1 0 1.41l-.71.71a1 1 0 1 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 0zm11.32 0a1 1 0 0 1-1.41 1.41l-.71-.71a1 1 0 1 1 1.41-1.41l.71.71zM7.05 6.34a1 1 0 0 1-1.41 0l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41z"
+              ></path></svg
+            >
+          </button>
+        </div>
+
+        <!-- PAGE HEADER -->
+        <div class="page-header">
+          <div class="eyebrow">
+            <span class="edot"></span> Velocity Web Studio <span class="edot"
+            ></span>
+          </div>
+          <h1 class="page-title">
+            Growth systems for<br /><em>local businesses.</em>
+          </h1>
+          <p class="page-desc">
+            We install the <strong>visibility, systems, and campaigns</strong> that
+            turn your existing business into a predictable revenue machine. Every
+            plan starts with a diagnosis — we prescribe what you actually need.
+          </p>
+        </div>
+
+        <!-- RESCUE -->
+        <div class="sh">
+          <span class="sl"></span><span class="slabel">Foundation fix</span
+          ><span class="sl"></span>
+        </div>
+
+        <div class="rescue-card">
+          <div class="rescue-icon">🔧</div>
+          <div class="rescue-body">
+            <div class="rescue-title">Rescue — One Time</div>
+            <div class="rescue-desc">
+              No GBP, broken profile, or suspended listing? Fix the foundation
+              before anything else can work.
+            </div>
+          </div>
+          <div class="rescue-price">$200–$500</div>
+        </div>
+
+        <!-- TIERS -->
+        <div class="sh">
+          <span class="sl"></span><span class="slabel">Monthly plans</span><span
+            class="sl"></span>
+        </div>
+
+        <div class="tiers">
+          <!-- FOUNDATION -->
+          <div class="tier-card">
+            <div class="tier-top">
+              <div class="tier-left">
+                <div class="tier-badges">
+                  <span class="tbadge">Tier 1</span>
+                </div>
+                <div class="tier-name">Foundation</div>
+                <div class="tier-tag">
+                  Install the catch system so no lead ever slips through again.
+                </div>
+              </div>
+              <div class="tier-price-block">
+                <div class="tier-price">$497<span>/mo</span></div>
+                <div class="tier-setup">+ $297 setup</div>
+              </div>
+            </div>
+            <div class="tier-rule"></div>
+            <ul class="tier-features">
+              <li>Missed call text-back</li>
+              <li>Lead capture + CRM</li>
+              <li>7-day nurture sequence</li>
+              <li>GBP setup &amp; optimization</li>
+              <li>Review automation</li>
+              <li>Monthly performance report</li>
+            </ul>
+            <a href="#" class="tier-cta cta-outline">Get Started →</a>
+          </div>
+
+          <!-- VISIBILITY — MOST POPULAR -->
+          <div class="tier-card featured">
+            <div class="tier-top">
+              <div class="tier-left">
+                <div class="tier-badges">
+                  <span class="tbadge">Tier 2</span><span class="popular-badge"
+                    >Most Popular</span
+                  >
+                </div>
+                <div class="tier-name">Visibility</div>
+                <div class="tier-tag">
+                  Get found by the right people in the right place at the right
+                  time.
+                </div>
+              </div>
+              <div class="tier-price-block">
+                <div class="tier-price">$997<span>/mo</span></div>
+                <div class="tier-setup">+ $497 setup</div>
+              </div>
+            </div>
+            <div class="tier-rule"></div>
+            <ul class="tier-features">
+              <li>Everything in Foundation</li>
+              <li>Full GBP management</li>
+              <li>Monthly heatmap report</li>
+              <li>Citation management (20)</li>
+              <li>Branded review portal</li>
+              <li>Reputation monitoring</li>
+            </ul>
+            <a href="#" class="tier-cta cta-solid">Get Started →</a>
+          </div>
+
+          <!-- AUTHORITY -->
+          <div class="tier-card">
+            <div class="tier-top">
+              <div class="tier-left">
+                <div class="tier-badges">
+                  <span class="tbadge">Tier 3</span>
+                </div>
+                <div class="tier-name">Authority</div>
+                <div class="tier-tag">
+                  Become the most recognized and trusted business in your local
+                  market.
+                </div>
+              </div>
+              <div class="tier-price-block">
+                <div class="tier-price">$1,497<span>/mo</span></div>
+                <div class="tier-setup">+ $697 setup</div>
+              </div>
+            </div>
+            <div class="tier-rule"></div>
+            <ul class="tier-features">
+              <li>Everything in Visibility</li>
+              <li>Monthly AI video content</li>
+              <li>Social media 3x/week</li>
+              <li>Monthly email campaign</li>
+              <li>Quarterly reactivation</li>
+              <li>Bi-monthly strategy call</li>
+            </ul>
+            <a href="#" class="tier-cta cta-outline">Get Started →</a>
+          </div>
+
+          <!-- DOMINATE -->
+          <div class="tier-card">
+            <div class="tier-top">
+              <div class="tier-left">
+                <div class="tier-badges">
+                  <span class="tbadge">Tier 4</span>
+                </div>
+                <div class="tier-name">Dominate</div>
+                <div class="tier-tag">
+                  Paid traffic, full funnel, every channel — scale without
+                  limits.
+                </div>
+              </div>
+              <div class="tier-price-block">
+                <div class="tier-price">$2,497<span>/mo</span></div>
+                <div class="tier-setup">+ $997 setup</div>
+              </div>
+            </div>
+            <div class="tier-rule"></div>
+            <ul class="tier-features">
+              <li>Everything in Authority</li>
+              <li>Meta or Google ad mgmt</li>
+              <li>Ad creative development</li>
+              <li>Landing page builds</li>
+              <li>Full funnel management</li>
+              <li>Monthly strategy call</li>
+            </ul>
+            <a href="#" class="tier-cta cta-outline">Get Started →</a>
+          </div>
+        </div>
+
+        <!-- AUDIT -->
+        <div class="sh">
+          <span class="sl"></span><span class="slabel"
+            >Not sure where to start?</span
+          ><span class="sl"></span>
+        </div>
+
+        <div class="audit-card">
+          <div class="audit-icon">🗺️</div>
+          <div class="audit-body">
+            <div class="audit-title">Paid Growth Audit</div>
+            <div class="audit-desc">
+              Full GBP heatmap, website conversion audit, review gap analysis,
+              and a growth gap report. We diagnose — you decide.
+            </div>
+          </div>
+          <div class="audit-right">
+            <div class="audit-price">$197</div>
+            <a href="#" class="audit-btn">Book Now</a>
+          </div>
+        </div>
+
+        <!-- ADD-ONS -->
+        <div class="sh">
+          <span class="sl"></span><span class="slabel">Add-ons</span><span
+            class="sl"></span>
+        </div>
+
+        <div class="addons">
+          <div class="addon">
+            <span class="addon-icon">🌐</span><div class="addon-name">
+              Starter Website
+            </div><div class="addon-desc">
+              Fast, mobile-first lead-gen site.
+            </div><div class="addon-price">$997 one time</div>
+          </div>
+          <div class="addon">
+            <span class="addon-icon">📧</span><div class="addon-name">
+              Email Campaigns
+            </div><div class="addon-desc">
+              Managed sequences and optimization.
+            </div><div class="addon-price">From $250/mo</div>
+          </div>
+          <div class="addon">
+            <span class="addon-icon">🔁</span><div class="addon-name">
+              DB Reactivation
+            </div><div class="addon-desc">
+              Re-engage past customers for repeat bookings.
+            </div><div class="addon-price">$497/quarter</div>
+          </div>
+          <div class="addon">
+            <span class="addon-icon">📍</span><div class="addon-name">
+              Extended Citations
+            </div><div class="addon-desc">
+              NAP consistency across 60+ directories.
+            </div><div class="addon-price">$75/mo</div>
+          </div>
+          <div class="addon">
+            <span class="addon-icon">🎬</span><div class="addon-name">
+              AI Video Creation
+            </div><div class="addon-desc">
+              Monthly short-form video for GBP + social.
+            </div><div class="addon-price">$197/mo</div>
+          </div>
+          <div class="addon">
+            <span class="addon-icon">📣</span><div class="addon-name">
+              Social Cross-Post
+            </div><div class="addon-desc">
+              GBP posts pushed to Facebook + Instagram.
+            </div><div class="addon-price">$197/mo</div>
+          </div>
+        </div>
+
+        <!-- BOTTOM CTA -->
+        <div class="bottom-cta">
+          <div class="bcta-title">Not sure which plan fits?</div>
+          <p class="bcta-desc">
+            Book a free 20-minute call. We'll look at your current setup,
+            identify the gaps, and tell you exactly what we'd recommend — no
+            pitch, no pressure.
+          </p>
+          <a href="#" class="bcta-btn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"
+              ><path
+                d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
+              ></path></svg
+            >
+            Book a Free Audit Call
+          </a>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+          <span class="fdot"></span>
+          <span class="fname">Velocity Web Studio — Boise, Idaho</span>
+          <span class="fdot"></span>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --orange: #ee4000;
+    --orange-hv: #ff6b35;
+    --orange-glow: rgba(238, 64, 0, 0.22);
+  }
+
+  [data-theme="dark"] {
+    --bg: #0c0c0c;
+    --bg-2: #141414;
+    --bg-3: #1e1e1e;
+    --bg-4: #282828;
+    --fg: #ffffff;
+    --fg-muted: #999999;
+    --fg-dim: #555555;
+    --border: rgba(255, 255, 255, 0.07);
+    --border-hv: rgba(255, 255, 255, 0.13);
+    --outer-bg: #080808;
+    --feat-bg: #191919;
+  }
+
+  [data-theme="light"] {
+    --bg: #f4f1ee;
+    --bg-2: #ffffff;
+    --bg-3: #edeae7;
+    --bg-4: #e2dfd9;
+    --fg: #111111;
+    --fg-muted: #555555;
+    --fg-dim: #aaaaaa;
+    --border: rgba(0, 0, 0, 0.08);
+    --border-hv: rgba(0, 0, 0, 0.15);
+    --outer-bg: #e8e5e1;
+    --feat-bg: #fff8f5;
+  }
+
+  html,
+  body {
+    font-family: "DM Sans", sans-serif;
+    background: var(--outer-bg);
+    min-height: 100vh;
+    transition:
+      background 0.3s,
+      color 0.3s;
+  }
+
+  /* centered column */
+  .outer {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    background: var(--outer-bg);
+    transition: background 0.3s;
+  }
+
+  .page {
+    width: 100%;
+    max-width: 480px;
+    background: var(--bg);
+    color: var(--fg);
+    padding: 0 20px 80px;
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.35);
+    transition:
+      background 0.3s,
+      color 0.3s;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0 0;
+    margin-bottom: 36px;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover {
+    color: var(--fg);
+  }
+  .back-link svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+
+  .brand {
+    font-family: "Syne", sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: -0.3px;
+    color: var(--fg);
+  }
+  .brand em {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  .theme-toggle {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg-3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+      transform 0.15s,
+      background 0.2s;
+  }
+  .theme-toggle:hover {
+    transform: scale(1.08);
+  }
+  .theme-toggle:active {
+    transform: scale(0.95);
+  }
+  .theme-toggle svg {
+    width: 14px;
+    height: 14px;
+    fill: var(--fg-muted);
+  }
+  .icon-sun {
+    display: none;
+  }
+  .icon-moon {
+    display: block;
+  }
+  [data-theme="light"] .icon-sun {
+    display: block;
+  }
+  [data-theme="light"] .icon-moon {
+    display: none;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    margin-bottom: 40px;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 14px;
+  }
+  .edot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--orange);
+    opacity: 0.6;
+  }
+
+  .page-title {
+    font-family: "Syne", sans-serif;
+    font-weight: 800;
+    font-size: clamp(26px, 6vw, 36px);
+    letter-spacing: -1px;
+    line-height: 1.08;
+    margin-bottom: 14px;
+  }
+  .page-title em {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  .page-desc {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--fg-muted);
+    transition: color 0.3s;
+  }
+  .page-desc strong {
+    color: var(--fg);
+    font-weight: 500;
+  }
+
+  /* ── SECTION HEADS ── */
+  .sh {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 40px 0 14px;
+  }
+  .sl {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    transition: background 0.3s;
+  }
+  .slabel {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    white-space: nowrap;
+    transition: color 0.3s;
+  }
+
+  /* ── RESCUE CARD ── */
+  .rescue-card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: background 0.3s;
+    animation: fadeUp 0.4s ease 0.05s both;
+  }
+  .rescue-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 11px;
+    background: rgba(238, 64, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .rescue-body {
+    flex: 1;
+  }
+  .rescue-title {
+    font-family: "Syne", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+  .rescue-desc {
+    font-size: 12px;
+    color: var(--fg-muted);
+    line-height: 1.45;
+    transition: color 0.3s;
+  }
+  .rescue-price {
+    font-family: "Syne", sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--orange);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── TIER CARDS ── */
+  .tiers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tier-card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition:
+      background 0.3s,
+      border-color 0.15s,
+      transform 0.12s;
+    animation: fadeUp 0.4s ease both;
+  }
+  .tier-card:nth-child(1) {
+    animation-delay: 0.07s;
+  }
+  .tier-card:nth-child(2) {
+    animation-delay: 0.12s;
+  }
+  .tier-card:nth-child(3) {
+    animation-delay: 0.17s;
+  }
+  .tier-card:nth-child(4) {
+    animation-delay: 0.22s;
+  }
+  .tier-card:hover {
+    border-color: var(--border-hv);
+    transform: translateY(-1px);
+  }
+
+  .tier-card.featured {
+    background: var(--feat-bg);
+    border-color: var(--orange);
+    box-shadow:
+      0 0 0 1px var(--orange),
+      0 8px 28px var(--orange-glow);
+  }
+
+  .tier-top {
+    padding: 18px 18px 14px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .tier-left {
+    flex: 1;
+  }
+  .tier-badges {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 5px;
+  }
+
+  .tbadge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(238, 64, 0, 0.12);
+    color: var(--orange);
+  }
+  .popular-badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: var(--orange);
+    color: #fff;
+  }
+
+  .tier-name {
+    font-family: "Syne", sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.4px;
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+  .tier-tag {
+    font-size: 12px;
+    color: var(--fg-muted);
+    line-height: 1.45;
+    max-width: 220px;
+    transition: color 0.3s;
+  }
+
+  .tier-price-block {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .tier-price {
+    font-family: "Syne", sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: -0.6px;
+    line-height: 1;
+  }
+  .tier-price span {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--fg-muted);
+    letter-spacing: 0;
+  }
+  .tier-setup {
+    font-size: 10.5px;
+    color: var(--fg-dim);
+    margin-top: 3px;
+    transition: color 0.3s;
+  }
+
+  .tier-rule {
+    height: 1px;
+    background: var(--border);
+    margin: 0 18px;
+    transition: background 0.3s;
+  }
+
+  .tier-features {
+    padding: 14px 18px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px 10px;
+    list-style: none;
+  }
+  .tier-features li {
+    font-size: 12px;
+    color: var(--fg-muted);
+    line-height: 1.35;
+    padding-left: 14px;
+    position: relative;
+    transition: color 0.3s;
+  }
+  .tier-features li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--orange);
+    opacity: 0.7;
+  }
+
+  .tier-cta {
+    display: block;
+    margin: 14px 18px 18px;
+    padding: 12px;
+    border-radius: 10px;
+    font-family: "Syne", sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    text-align: center;
+    text-decoration: none;
+    transition:
+      background 0.18s,
+      transform 0.12s,
+      box-shadow 0.18s;
+  }
+  .cta-solid {
+    background: var(--orange);
+    color: #fff;
+    box-shadow: 0 4px 14px var(--orange-glow);
+  }
+  .cta-solid:hover {
+    background: var(--orange-hv);
+    box-shadow: 0 6px 20px rgba(238, 64, 0, 0.32);
+  }
+  .cta-outline {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--border-hv);
+  }
+  .cta-outline:hover {
+    background: var(--bg-3);
+  }
+  .tier-cta:active {
+    transform: scale(0.98);
+  }
+
+  /* ── AUDIT CARD ── */
+  .audit-card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    animation: fadeUp 0.4s ease 0.1s both;
+    transition: background 0.3s;
+  }
+  .audit-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 13px;
+    background: rgba(238, 64, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .audit-body {
+    flex: 1;
+  }
+  .audit-title {
+    font-family: "Syne", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  .audit-desc {
+    font-size: 12px;
+    color: var(--fg-muted);
+    line-height: 1.5;
+    transition: color 0.3s;
+  }
+  .audit-right {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .audit-price {
+    font-family: "Syne", sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--orange);
+    letter-spacing: -0.4px;
+  }
+  .audit-btn {
+    display: inline-block;
+    margin-top: 7px;
+    padding: 6px 13px;
+    border-radius: 8px;
+    background: var(--orange);
+    color: #fff;
+    font-family: "Syne", sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .audit-btn:hover {
+    background: var(--orange-hv);
+  }
+
+  /* ── ADD-ONS ── */
+  .addons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    animation: fadeUp 0.4s ease 0.12s both;
+  }
+
+  .addon {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 15px;
+    transition:
+      background 0.15s,
+      border-color 0.15s;
+  }
+  .addon:hover {
+    background: var(--bg-3);
+    border-color: var(--border-hv);
+  }
+
+  .addon-icon {
+    font-size: 19px;
+    display: block;
+    margin-bottom: 9px;
+  }
+  .addon-name {
+    font-family: "Syne", sans-serif;
+    font-weight: 700;
+    font-size: 12.5px;
+    margin-bottom: 3px;
+  }
+  .addon-desc {
+    font-size: 11px;
+    color: var(--fg-muted);
+    line-height: 1.45;
+    margin-bottom: 9px;
+    transition: color 0.3s;
+  }
+  .addon-price {
+    font-family: "Syne", sans-serif;
+    font-weight: 800;
+    font-size: 12.5px;
+    color: var(--orange);
+  }
+
+  /* ── BOTTOM CTA ── */
+  .bottom-cta {
+    margin-top: 40px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.4s ease 0.18s both;
+    transition: background 0.3s;
+  }
+  .bottom-cta::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--orange), transparent);
+  }
+  .bcta-title {
+    font-family: "Syne", sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.4px;
+    margin-bottom: 10px;
+  }
+  .bcta-desc {
+    font-size: 13px;
+    color: var(--fg-muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    transition: color 0.3s;
+  }
+  .bcta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--orange);
+    color: #fff;
+    padding: 13px 24px;
+    border-radius: 11px;
+    font-family: "Syne", sans-serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    text-decoration: none;
+    box-shadow: 0 6px 22px var(--orange-glow);
+    transition:
+      background 0.18s,
+      box-shadow 0.18s,
+      transform 0.12s;
+  }
+  .bcta-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: #fff;
+  }
+  .bcta-btn:hover {
+    background: var(--orange-hv);
+    box-shadow: 0 8px 28px rgba(238, 64, 0, 0.32);
+  }
+  .bcta-btn:active {
+    transform: scale(0.98);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 32px 0 0;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+  .fdot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--orange);
+    opacity: 0.55;
+  }
+  .fname {
+    font-family: "Syne", sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--fg-dim);
+    letter-spacing: 0.3px;
+    transition: color 0.3s;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const html = document.documentElement;
+    const btn = document.getElementById("themeToggle");
+    const KEY = "vws-theme";
+
+    const saved = localStorage.getItem(KEY);
+    const sys = window.matchMedia("(prefers-color-scheme: light)").matches
+      ? "light"
+      : "dark";
+    html.setAttribute("data-theme", saved ?? sys);
+
+    btn.addEventListener("click", () => {
+      const next =
+        html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      html.setAttribute("data-theme", next);
+      localStorage.setItem(KEY, next);
+    });
+
+    window
+      .matchMedia("(prefers-color-scheme: light)")
+      .addEventListener("change", (e) => {
+        if (!localStorage.getItem(KEY)) {
+          html.setAttribute("data-theme", e.matches ? "light" : "dark");
+        }
+      });
+  })();
+</script>
