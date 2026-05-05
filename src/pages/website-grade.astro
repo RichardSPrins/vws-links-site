@@ -409,6 +409,7 @@ const portfolio = [
           loadingUrl.textContent = websiteUrl;
           hide(formStep);
           show(loadingStep);
+          window.scrollTo({ top: 0, behavior: "smooth" });
 
           let data;
           try {
@@ -491,7 +492,10 @@ const portfolio = [
       .page {
         max-width: 720px;
         margin: 0 auto;
-        padding: 0 22px 60px;
+        padding-top: 0;
+        padding-bottom: 60px;
+        padding-left: max(22px, env(safe-area-inset-left));
+        padding-right: max(22px, env(safe-area-inset-right));
       }
 
       .topbar {
@@ -703,6 +707,9 @@ const portfolio = [
       }
 
       /* RESULTS */
+      .results-step {
+        padding-top: 8px;
+      }
       .results-head {
         display: flex;
         align-items: center;
@@ -900,6 +907,30 @@ const portfolio = [
       @media (max-width: 540px) {
         .cat-grid {
           grid-template-columns: 1fr;
+        }
+        .score-card {
+          padding: 24px 18px;
+        }
+        .score-num {
+          font-size: 64px;
+          letter-spacing: -2px;
+        }
+        .score-letter {
+          font-size: 44px;
+          margin-left: 10px;
+          padding-left: 12px;
+        }
+        .score-of {
+          font-size: 14px;
+        }
+        .bottom-cta {
+          padding: 24px 18px;
+        }
+        .bottom-cta-title {
+          font-size: 18px;
+        }
+        .section-title {
+          margin: 28px 0 12px;
         }
       }
 
