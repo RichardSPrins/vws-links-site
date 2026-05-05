@@ -1,0 +1,1045 @@
+---
+// src/pages/website-grade.astro
+// VWS website grader tool — submits to /api/grade, renders results inline.
+// Lead is captured before results are shown and forwarded to GHL via webhook
+// (server-side, inside the API route).
+
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "";
+
+const portfolio = [
+  {
+    name: "Hidden Gems Boise",
+    niche: "Local directory",
+    href: "https://hiddengemsboise.com",
+  },
+  {
+    name: "Boise Plumbing Co",
+    niche: "Home services",
+    href: "#",
+  },
+  {
+    name: "Treasure Valley Dental",
+    niche: "Healthcare",
+    href: "#",
+  },
+  {
+    name: "Foothills Auto Repair",
+    niche: "Automotive",
+    href: "#",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free Website Grader — Velocity Web Studio</title>
+    <meta
+      name="description"
+      content="Find out if your website is costing you customers. Get a free score in seconds — no signup required."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    {
+      turnstileSiteKey && (
+        <script
+          is:inline
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          async
+          defer
+        />
+      )
+    }
+  </head>
+
+  <body data-turnstile-key={turnstileSiteKey}>
+    <main class="page">
+      <header class="topbar">
+        <a href="/" class="back-link">
+          <svg viewBox="0 0 24 24" aria-hidden="true"
+            ><path
+              d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+            ></path></svg
+          >
+          Back
+        </a>
+        <span class="brand">Velocity <em>Web</em></span>
+        <span class="spacer" aria-hidden="true"></span>
+      </header>
+
+      <!-- STEP 1: Form -->
+      <section class="form-step" id="formStep">
+        <div class="eyebrow">
+          <span class="edot"></span> Free website grader <span class="edot"
+          ></span>
+        </div>
+        <h1 class="headline">
+          Find Out If Your Website Is<br /><em>Costing You Customers</em>
+        </h1>
+        <p class="subheadline">
+          Enter your URL and get a free score in seconds. No signup required.
+        </p>
+
+        <form class="grader-form" id="graderForm" novalidate>
+          <label class="field">
+            <span class="field-label">First Name</span>
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              autocomplete="given-name"
+              placeholder="Richard"
+              required
+            />
+          </label>
+
+          <label class="field">
+            <span class="field-label">Email Address</span>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              autocomplete="email"
+              placeholder="you@business.com"
+              required
+            />
+          </label>
+
+          <label class="field">
+            <span class="field-label">Website URL</span>
+            <input
+              type="text"
+              name="websiteUrl"
+              id="websiteUrl"
+              inputmode="url"
+              placeholder="yourbusiness.com"
+              required
+            />
+          </label>
+
+          {/* Honeypot — visually hidden, off the tab order. Bots fill, humans skip. */}
+          <div class="hp-field" aria-hidden="true">
+            <label>
+              Company website (leave blank)
+              <input
+                type="text"
+                name="companyWebsite"
+                id="companyWebsite"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </label>
+          </div>
+
+          {
+            turnstileSiteKey && (
+              <div
+                class="cf-turnstile"
+                id="turnstileWidget"
+                data-sitekey={turnstileSiteKey}
+                data-theme="dark"
+                data-size="flexible"
+              />
+            )
+          }
+
+          <button type="submit" class="cta-primary" id="submitBtn">
+            <span class="cta-text">Grade My Website</span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"
+              ><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path></svg
+            >
+          </button>
+
+          <p class="form-disclaimer">
+            By submitting, you agree to receive your results and occasional
+            follow-up emails from Velocity Web Studio. Unsubscribe anytime.
+          </p>
+
+          <p class="form-error" id="formError" hidden></p>
+        </form>
+      </section>
+
+      <!-- STEP 2: Loading -->
+      <section class="loading-step" id="loadingStep" hidden>
+        <div class="loader" aria-hidden="true"></div>
+        <p class="loading-text">
+          Analyzing <span id="loadingUrl"></span>...
+        </p>
+        <p class="loading-sub">Running 18 checks across 6 categories.</p>
+      </section>
+
+      <!-- STEP 3: Results -->
+      <section class="results-step" id="resultsStep" hidden>
+        <div class="results-head">
+          <p class="analyzed-line">
+            Analysis complete for <strong id="analyzedUrl"></strong>
+          </p>
+          <button type="button" class="reset-link" id="resetBtn">
+            Analyze another site
+          </button>
+        </div>
+
+        <div class="score-card">
+          <div class="score-display">
+            <div class="score-num" id="scoreNum">0</div>
+            <div class="score-of">/ 100</div>
+            <div class="score-letter" id="scoreLetter">F</div>
+          </div>
+          <p class="score-label" id="scoreLabel"></p>
+          <p class="attribution">Analyzed by Velocity Web</p>
+        </div>
+
+        <h2 class="section-title">Score breakdown</h2>
+        <div class="cat-grid" id="catGrid"></div>
+
+        <h2 class="section-title">Top issues found</h2>
+        <ul class="issues-list" id="issuesList"></ul>
+
+        <h2 class="section-title">
+          Real websites we have built for businesses like yours
+        </h2>
+        <div class="portfolio-grid">
+          {
+            portfolio.map((p) => (
+              <a href={p.href} class="portfolio-card" target="_blank" rel="noopener">
+                <span class="port-name">{p.name}</span>
+                <span class="port-niche">{p.niche}</span>
+                <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+                </svg>
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="bottom-cta">
+          <h3 class="bottom-cta-title">
+            Your site has gaps. Let us build you something better.
+          </h3>
+          <a
+            href="https://api.velocitywebstudio.com/widget/booking/CMbwt09JaJslZKjNBGoW"
+            class="cta-primary"
+          >
+            <span class="cta-text">Book a Call</span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"
+              ><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path></svg
+            >
+          </a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span class="fdot" aria-hidden="true"></span>
+        <span class="fname">Velocity Web Studio</span>
+        <span class="fdot" aria-hidden="true"></span>
+      </footer>
+    </main>
+
+    <script is:inline>
+      (function () {
+        const form = document.getElementById("graderForm");
+        const formStep = document.getElementById("formStep");
+        const loadingStep = document.getElementById("loadingStep");
+        const resultsStep = document.getElementById("resultsStep");
+        const submitBtn = document.getElementById("submitBtn");
+        const formError = document.getElementById("formError");
+        const loadingUrl = document.getElementById("loadingUrl");
+        const analyzedUrl = document.getElementById("analyzedUrl");
+        const scoreNum = document.getElementById("scoreNum");
+        const scoreLetter = document.getElementById("scoreLetter");
+        const scoreLabel = document.getElementById("scoreLabel");
+        const catGrid = document.getElementById("catGrid");
+        const issuesList = document.getElementById("issuesList");
+        const resetBtn = document.getElementById("resetBtn");
+
+        function show(el) {
+          el.hidden = false;
+        }
+        function hide(el) {
+          el.hidden = true;
+        }
+        function setError(msg) {
+          if (!msg) {
+            formError.hidden = true;
+            formError.textContent = "";
+            return;
+          }
+          formError.hidden = false;
+          formError.textContent = msg;
+        }
+
+        function escapeHtml(s) {
+          return String(s ?? "").replace(/[&<>"']/g, function (c) {
+            return {
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            }[c];
+          });
+        }
+
+        function renderResults(data) {
+          analyzedUrl.textContent = data.url;
+          scoreNum.textContent = String(data.totalScore);
+          scoreLetter.textContent = data.letterGrade;
+          scoreLabel.textContent = data.scoreLabel;
+
+          // Color the score by tier
+          const score = data.totalScore;
+          const card = scoreNum.closest(".score-card");
+          card.classList.remove("tier-a", "tier-b", "tier-c", "tier-f");
+          if (score >= 80) card.classList.add("tier-a");
+          else if (score >= 60) card.classList.add("tier-b");
+          else if (score >= 40) card.classList.add("tier-c");
+          else card.classList.add("tier-f");
+
+          // Categories
+          catGrid.innerHTML = data.categories
+            .map(function (c) {
+              const passing = c.percent >= 70;
+              const label = passing ? c.description : c.failLabel;
+              return (
+                '<div class="cat-card ' +
+                (passing ? "cat-pass" : "cat-fail") +
+                '">' +
+                '<div class="cat-head">' +
+                '<span class="cat-name">' +
+                escapeHtml(c.name) +
+                "</span>" +
+                '<span class="cat-score">' +
+                c.percent +
+                '<span class="cat-of">/100</span></span>' +
+                "</div>" +
+                '<div class="cat-bar"><div class="cat-bar-fill" style="width:' +
+                c.percent +
+                '%"></div></div>' +
+                '<p class="cat-desc">' +
+                escapeHtml(label) +
+                "</p>" +
+                "</div>"
+              );
+            })
+            .join("");
+
+          // Top issues
+          if (!data.topIssues.length) {
+            issuesList.innerHTML =
+              '<li class="issue-empty">No major issues found. Nice work.</li>';
+          } else {
+            issuesList.innerHTML = data.topIssues
+              .map(function (i) {
+                const pillClass =
+                  i.priority === "High" ? "pill-high" : "pill-medium";
+                return (
+                  '<li class="issue-item">' +
+                  '<span class="issue-pill ' +
+                  pillClass +
+                  '">' +
+                  escapeHtml(i.priority) +
+                  "</span>" +
+                  '<span class="issue-name">' +
+                  escapeHtml(i.name) +
+                  "</span>" +
+                  '<span class="issue-cat">' +
+                  escapeHtml(i.category) +
+                  "</span>" +
+                  "</li>"
+                );
+              })
+              .join("");
+          }
+        }
+
+        const turnstileKey = document.body.dataset.turnstileKey || "";
+
+        function getTurnstileToken() {
+          if (!turnstileKey) return "";
+          const input = document.querySelector(
+            'input[name="cf-turnstile-response"]',
+          );
+          return input ? input.value : "";
+        }
+
+        function resetTurnstile() {
+          if (!turnstileKey) return;
+          if (window.turnstile && typeof window.turnstile.reset === "function") {
+            try {
+              window.turnstile.reset("#turnstileWidget");
+            } catch (_) {}
+          }
+        }
+
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          setError("");
+
+          const firstName = document.getElementById("firstName").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const websiteUrl = document
+            .getElementById("websiteUrl")
+            .value.trim();
+          const companyWebsite = document
+            .getElementById("companyWebsite").value;
+
+          if (!firstName || !email || !websiteUrl) {
+            setError("Please fill in all three fields.");
+            return;
+          }
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            setError("That email doesn't look right.");
+            return;
+          }
+
+          const turnstileToken = getTurnstileToken();
+          if (turnstileKey && !turnstileToken) {
+            setError(
+              "Hang on a moment — verification is still loading. Try again in a second.",
+            );
+            return;
+          }
+
+          submitBtn.disabled = true;
+          loadingUrl.textContent = websiteUrl;
+          hide(formStep);
+          show(loadingStep);
+
+          let data;
+          try {
+            const res = await fetch("/api/grade", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                firstName,
+                email,
+                websiteUrl,
+                turnstileToken,
+                companyWebsite,
+              }),
+            });
+            data = await res.json();
+            if (!res.ok) {
+              throw new Error(data.error || "Something went wrong.");
+            }
+          } catch (err) {
+            hide(loadingStep);
+            show(formStep);
+            submitBtn.disabled = false;
+            resetTurnstile();
+            setError(err.message || "We couldn't analyze that site.");
+            return;
+          }
+
+          renderResults(data);
+          hide(loadingStep);
+          show(resultsStep);
+          submitBtn.disabled = false;
+        });
+
+        resetBtn.addEventListener("click", function () {
+          hide(resultsStep);
+          show(formStep);
+          form.reset();
+          setError("");
+          resetTurnstile();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      })();
+    </script>
+
+    <style is:global>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg: #0f0f0f;
+        --bg-card: #1a1a1a;
+        --bg-card-2: #222;
+        --fg: #ffffff;
+        --fg-muted: #a8a8a8;
+        --fg-dim: #6e6e6e;
+        --border: rgba(255, 255, 255, 0.08);
+        --border-hv: rgba(255, 255, 255, 0.16);
+        --orange: #ee4000;
+        --orange-hv: #ff6b35;
+        --orange-glow: rgba(238, 64, 0, 0.28);
+        --green: #34d399;
+        --red: #ef4444;
+        --yellow: #f5b942;
+      }
+
+      html,
+      body {
+        font-family: "DM Sans", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .page {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 22px 60px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--fg-muted);
+        text-decoration: none;
+        font-size: 13px;
+      }
+      .back-link svg {
+        width: 14px;
+        height: 14px;
+        fill: currentColor;
+      }
+      .back-link:hover {
+        color: var(--fg);
+      }
+      .brand {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 14px;
+        letter-spacing: -0.3px;
+      }
+      .brand em {
+        font-style: normal;
+        color: var(--orange);
+      }
+      .spacer {
+        width: 40px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 2.2px;
+        text-transform: uppercase;
+        color: var(--fg-dim);
+        margin-bottom: 16px;
+      }
+      .edot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--orange);
+      }
+
+      .headline {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: clamp(28px, 5.6vw, 40px);
+        line-height: 1.05;
+        letter-spacing: -1px;
+        margin-bottom: 14px;
+      }
+      .headline em {
+        font-style: normal;
+        color: var(--orange);
+      }
+      .subheadline {
+        font-size: 15px;
+        line-height: 1.55;
+        color: var(--fg-muted);
+        max-width: 520px;
+        margin-bottom: 28px;
+      }
+
+      .grader-form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 22px;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .field-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: var(--fg-muted);
+      }
+      .field input {
+        background: #111;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-family: inherit;
+        font-size: 14px;
+        color: var(--fg);
+        transition: border-color 0.15s, background 0.15s;
+      }
+      .field input::placeholder {
+        color: var(--fg-dim);
+      }
+      .field input:focus {
+        outline: none;
+        border-color: var(--orange);
+        background: #161616;
+      }
+
+      .cta-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--orange);
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        padding: 15px 22px;
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        cursor: pointer;
+        text-decoration: none;
+        box-shadow: 0 6px 24px var(--orange-glow);
+        transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+        margin-top: 6px;
+      }
+      .cta-primary:hover {
+        background: var(--orange-hv);
+        box-shadow: 0 10px 32px rgba(238, 64, 0, 0.4);
+      }
+      .cta-primary:active {
+        transform: scale(0.98);
+      }
+      .cta-primary:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      .cta-primary .chev {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+      }
+
+      .hp-field {
+        position: absolute !important;
+        left: -10000px !important;
+        top: auto !important;
+        width: 1px !important;
+        height: 1px !important;
+        overflow: hidden !important;
+      }
+
+      .cf-turnstile {
+        margin-top: 4px;
+        min-height: 65px;
+      }
+
+      .form-disclaimer {
+        font-size: 11px;
+        line-height: 1.5;
+        color: var(--fg-dim);
+        margin-top: 4px;
+        text-align: center;
+      }
+
+      .form-error {
+        color: var(--red);
+        font-size: 13px;
+        margin-top: 4px;
+      }
+
+      /* LOADING */
+      .loading-step {
+        text-align: center;
+        padding: 60px 0;
+      }
+      .loader {
+        width: 44px;
+        height: 44px;
+        margin: 0 auto 22px;
+        border: 3px solid rgba(238, 64, 0, 0.2);
+        border-top-color: var(--orange);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .loading-text {
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 6px;
+      }
+      .loading-sub {
+        font-size: 13px;
+        color: var(--fg-muted);
+      }
+
+      /* RESULTS */
+      .results-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+      .analyzed-line {
+        font-size: 13px;
+        color: var(--fg-muted);
+      }
+      .analyzed-line strong {
+        color: var(--fg);
+        font-weight: 500;
+        word-break: break-all;
+      }
+      .reset-link {
+        background: none;
+        border: 1px solid var(--border);
+        color: var(--fg-muted);
+        font-family: inherit;
+        font-size: 12px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: border-color 0.15s, color 0.15s;
+      }
+      .reset-link:hover {
+        border-color: var(--border-hv);
+        color: var(--fg);
+      }
+
+      .score-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 32px 24px;
+        text-align: center;
+        margin-bottom: 32px;
+        position: relative;
+        overflow: hidden;
+      }
+      .score-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--orange) 50%,
+          transparent
+        );
+      }
+      .score-display {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 6px;
+        margin-bottom: 10px;
+      }
+      .score-num {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 84px;
+        line-height: 1;
+        color: var(--orange);
+        letter-spacing: -3px;
+      }
+      .score-of {
+        font-size: 16px;
+        color: var(--fg-dim);
+        font-weight: 500;
+      }
+      .score-letter {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 56px;
+        line-height: 1;
+        color: var(--fg);
+        margin-left: 14px;
+        padding-left: 18px;
+        border-left: 1px solid var(--border);
+      }
+      .tier-a .score-num,
+      .tier-a .score-letter {
+        color: var(--green);
+      }
+      .tier-b .score-num,
+      .tier-b .score-letter {
+        color: var(--orange);
+      }
+      .tier-c .score-num,
+      .tier-c .score-letter {
+        color: var(--yellow);
+      }
+      .tier-f .score-num,
+      .tier-f .score-letter {
+        color: var(--red);
+      }
+      .score-label {
+        font-size: 14px;
+        color: var(--fg-muted);
+        line-height: 1.5;
+        max-width: 460px;
+        margin: 0 auto 14px;
+      }
+      .attribution {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--fg-dim);
+      }
+
+      .section-title {
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        margin: 32px 0 14px;
+      }
+
+      /* CATEGORY GRID */
+      .cat-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .cat-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 16px 16px 14px;
+      }
+      .cat-pass {
+        border-color: rgba(52, 211, 153, 0.25);
+      }
+      .cat-fail {
+        border-color: rgba(239, 68, 68, 0.25);
+      }
+      .cat-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+      .cat-name {
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+      }
+      .cat-score {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 22px;
+        color: var(--orange);
+      }
+      .cat-pass .cat-score {
+        color: var(--green);
+      }
+      .cat-fail .cat-score {
+        color: var(--red);
+      }
+      .cat-of {
+        font-size: 11px;
+        color: var(--fg-dim);
+        font-weight: 500;
+        margin-left: 2px;
+      }
+      .cat-bar {
+        width: 100%;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 10px;
+      }
+      .cat-bar-fill {
+        height: 100%;
+        background: var(--orange);
+        transition: width 0.4s ease;
+      }
+      .cat-pass .cat-bar-fill {
+        background: var(--green);
+      }
+      .cat-fail .cat-bar-fill {
+        background: var(--red);
+      }
+      .cat-desc {
+        font-size: 12px;
+        color: var(--fg-muted);
+        line-height: 1.5;
+      }
+      @media (max-width: 540px) {
+        .cat-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ISSUES LIST */
+      .issues-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .issue-item {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 12px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 13px 14px;
+      }
+      .issue-pill {
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        padding: 4px 8px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+      .pill-high {
+        background: rgba(239, 68, 68, 0.16);
+        color: var(--red);
+      }
+      .pill-medium {
+        background: rgba(245, 185, 66, 0.14);
+        color: var(--yellow);
+      }
+      .issue-name {
+        font-size: 13.5px;
+        line-height: 1.4;
+      }
+      .issue-cat {
+        font-size: 11px;
+        color: var(--fg-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+      }
+      .issue-empty {
+        background: var(--bg-card);
+        border: 1px solid rgba(52, 211, 153, 0.25);
+        border-radius: 12px;
+        padding: 14px 16px;
+        font-size: 13.5px;
+        color: var(--green);
+      }
+
+      /* PORTFOLIO */
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .portfolio-card {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 14px 14px;
+        text-decoration: none;
+        color: var(--fg);
+        transition: border-color 0.15s, transform 0.1s;
+      }
+      .portfolio-card:hover {
+        border-color: var(--orange);
+      }
+      .portfolio-card:active {
+        transform: scale(0.985);
+      }
+      .port-name {
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        flex: 1;
+      }
+      .port-niche {
+        font-size: 11px;
+        color: var(--fg-dim);
+      }
+      .portfolio-card .chev {
+        width: 14px;
+        height: 14px;
+        fill: var(--fg-dim);
+      }
+      @media (max-width: 540px) {
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* BOTTOM CTA */
+      .bottom-cta {
+        margin-top: 36px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 28px 24px;
+        text-align: center;
+      }
+      .bottom-cta-title {
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 1.3;
+        margin-bottom: 18px;
+      }
+
+      /* FOOTER */
+      .footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 36px 0 0;
+      }
+      .fdot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: var(--orange);
+        opacity: 0.55;
+      }
+      .fname {
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 11px;
+        color: var(--fg-dim);
+        letter-spacing: 0.3px;
+      }
+    </style>
+  </body>
+</html>

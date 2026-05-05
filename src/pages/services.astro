@@ -2,6 +2,8 @@
 // src/pages/services.astro
 // VWS services and pricing page
 // Linked from links.astro via /services
+
+export const prerender = true;
 ---
 
 <!doctype html>
@@ -84,6 +86,88 @@
             </div>
           </div>
           <div class="rescue-price">$200–$500</div>
+        </div>
+
+        <!-- GBP STANDALONE -->
+        <div class="sh">
+          <span class="sl"></span><span class="slabel"
+            >Google Business Profile</span
+          ><span class="sl"></span>
+        </div>
+
+        <p class="section-intro">
+          GBP-only management for businesses that just want to rank, get
+          reviews, and post consistently — without the broader system.
+        </p>
+
+        <div class="tiers">
+          <!-- GBP BASE -->
+          <div class="tier-card">
+            <div class="tier-top">
+              <div class="tier-left">
+                <div class="tier-badges">
+                  <span class="tbadge">GBP Base</span>
+                </div>
+                <div class="tier-name">GBP Standalone</div>
+                <div class="tier-tag">
+                  Your profile ranks, gets reviews, and posts consistently —
+                  without you doing any of it.
+                </div>
+              </div>
+              <div class="tier-price-block">
+                <div class="tier-price">$497<span>/mo</span></div>
+                <div class="tier-setup">+ $497 setup</div>
+              </div>
+            </div>
+            <div class="tier-rule"></div>
+            <ul class="tier-features">
+              <li>6-phase profile optimization</li>
+              <li>1 keyword-optimized post / week</li>
+              <li>3–5 photos uploaded weekly</li>
+              <li>AI review responses within 24h</li>
+              <li>Q&amp;A monitoring (48h SLA)</li>
+              <li>Monthly heatmap report</li>
+              <li>Profile freshness checks</li>
+            </ul>
+            <a
+              href="https://api.velocitywebstudio.com/widget/booking/CMbwt09JaJslZKjNBGoW"
+              class="tier-cta cta-outline">Get Started →</a
+            >
+          </div>
+
+          <!-- GBP PREMIUM -->
+          <div class="tier-card">
+            <div class="tier-top">
+              <div class="tier-left">
+                <div class="tier-badges">
+                  <span class="tbadge">GBP Premium</span>
+                </div>
+                <div class="tier-name">GBP Standalone+</div>
+                <div class="tier-tag">
+                  Be the most-reviewed, most-cited business in your category —
+                  with strategic input each month.
+                </div>
+              </div>
+              <div class="tier-price-block">
+                <div class="tier-price">$797<span>/mo</span></div>
+                <div class="tier-setup">+ $797 setup</div>
+              </div>
+            </div>
+            <div class="tier-rule"></div>
+            <ul class="tier-features">
+              <li>Everything in GBP Base</li>
+              <li>Citations audit &amp; cleanup (top 25–50)</li>
+              <li>2–5 new citations submitted / mo</li>
+              <li>Social cross-post (Facebook + Instagram)</li>
+              <li>Branded review portal</li>
+              <li>Monthly strategy snapshot + 30-min call</li>
+              <li>Competitor benchmarking</li>
+            </ul>
+            <a
+              href="https://api.velocitywebstudio.com/widget/booking/CMbwt09JaJslZKjNBGoW"
+              class="tier-cta cta-outline">Get Started →</a
+            >
+          </div>
         </div>
 
         <!-- TIERS -->
@@ -538,6 +622,13 @@
     text-transform: uppercase;
     color: var(--fg-dim);
     white-space: nowrap;
+    transition: color 0.3s;
+  }
+  .section-intro {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--fg-muted);
+    margin: -4px 0 16px;
     transition: color 0.3s;
   }
 
