@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* VWS surface palette — dark default */
+  --color-ink: #0a0a0a;
+  --color-ink-2: #121212;
+  --color-ink-3: #181818;
+  --color-ink-4: #1f1f1f;
+  --color-cream: #f6f3ef;
+  --color-paper: #f1ede7;
+
+  /* VWS brand — orange */
+  --color-brand-300: #ffb074;
+  --color-brand-400: #ff8a4a;
+  --color-brand-500: #ee4000;
+  --color-brand-600: #ff6b35;
+  --color-brand-700: #c83400;
+
+  /* warm secondary for gentle variety on numeric callouts */
+  --color-amber: #f5a623;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}

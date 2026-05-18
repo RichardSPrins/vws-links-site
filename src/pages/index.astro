@@ -1,20 +1,11 @@
 ---
-// src/pages/index.astro
-// VWS marketing home — H.A.S.I.T. framework (Headline / Audience / Solution / Identity / Testimonials).
-// CTA target: GHL Small Favor 45-min booking widget.
-
+import BaseLayout from "../layouts/BaseLayout.astro";
 import headshot from "../assets/headshot.png";
 
 export const prerender = true;
 
 const calendarUrl =
   "https://api.velocitywebstudio.com/widget/booking/mcWyJi4NDQ1tg3JDZlYS";
-
-const trustStrip = [
-  "5 leads in 60 days, guaranteed",
-  "One client per category per city",
-  "Month-to-month",
-];
 
 const stats = [
   { n: "46%", l: "of all Google searches are local" },
@@ -23,33 +14,37 @@ const stats = [
     l: "of people who run a local search call or visit within 24 hours",
   },
   { n: "97%", l: "of Google users have used search to find a local business" },
-  { n: "900%", l: "growth in “near me” searches in recent years" },
+  { n: "900%", l: "growth in 'near me' searches in recent years" },
 ];
 
-const audiencePoints = [
-  "You can't answer the phone at 9pm while you're on a job",
-  "The competitors ranking above you on Google aren't better — they're just running a system you don't have",
-  "You've been sold “marketing services” by people who never installed the system end-to-end",
-  "You're trying to do the work and figure out Google and post weekly and chase reviews and respond to leads in 60 seconds",
-  "The agencies you've worked with sold you one piece of the puzzle and called it marketing",
+const problemPoints = [
+  "It's that you can't answer the phone at 9pm while you're on a job.",
+  "It's that the competitors ranking above you on Google aren't better. They're just running a system you don't have.",
+  "It's that you've been sold 'marketing services' by people who never installed the whole system end to end.",
+  "It's that you're trying to do the work, figure out Google, post weekly, chase reviews, and respond to leads in 60 seconds, all at the same time.",
+  "It's that the agencies you've worked with sold you one piece of the puzzle and called it marketing.",
 ];
 
 const differentiators = [
   {
-    h: "End-to-end, not piecemeal.",
-    p: "Most agencies sell one piece — SEO, or ads, or a website. We install all five: visibility, capture, follow-up, paid traffic, organic SEO. Pieces don't compound. Systems do.",
+    h: "End to end, not piecemeal.",
+    p: "Most agencies sell one piece. SEO, or ads, or a website. We install all five: visibility, capture, follow-up, paid traffic, organic SEO. Pieces don't compound. Systems do.",
   },
   {
-    h: "Done-for-you, not done-with-you.",
+    h: "Done for you, not done with you.",
     p: "You don't learn the tools. You don't manage the CRM. You don't post weekly. We run it. You do the work you're already good at.",
   },
   {
-    h: "Backed by a guarantee most agencies won't make.",
-    p: "5 qualified leads in 60 days, or we work free until you get them. The system has run across niches and service areas enough times for us to put our revenue on the line. We do.",
+    h: "Built to produce fast.",
+    p: "The system is engineered to start putting qualified leads in front of you inside the first 60 days. Most of our clients see it pay for itself before the second month closes. We've run this enough times across niches and service areas to know what the curve looks like.",
   },
   {
-    h: "One client per category, per city.",
-    p: "We're not selling the same playbook to your three nearest competitors. Your win matters to us — that's also why availability is limited.",
+    h: "Your category, closed to your competitors.",
+    p: "We don't sell the same playbook to the three businesses ranked above and below you. When you sign, your category in your city is closed to everyone else. It isn't a scarcity tactic. It's the only way the system stays fair to the people we already work with.",
+  },
+  {
+    h: "Month to month, no contracts.",
+    p: "You stay because it's working, not because you're locked in. If we're not earning the spend, you shouldn't be paying it.",
   },
   {
     h: "Compounds over time.",
@@ -57,1042 +52,738 @@ const differentiators = [
   },
 ];
 
+const process = [
+  {
+    when: "Week 1",
+    h: "Audit and strategy",
+    p: "We map your current Google presence, find the leaks in your lead flow, and benchmark you against the businesses ranking above you. You get a clear install plan with no fluff.",
+  },
+  {
+    when: "Weeks 2 to 3",
+    h: "Build and install",
+    p: "We set up the full stack. Google Business Profile optimization, review system, missed-call text-back, follow-up sequences, ad accounts, tracking. Everything wired and live.",
+  },
+  {
+    when: "Week 4",
+    h: "Launch",
+    p: "The system goes on. Leads start coming through.",
+  },
+  {
+    when: "Week 5 and beyond",
+    h: "Run, refine, scale",
+    p: "We work the system every week. You get weekly performance reports. We optimize what's working and kill what isn't. The longer it runs, the better it gets.",
+  },
+];
+
+const aboutParas = [
+  "I'm Richard Prins. I run Velocity Web Studio out of Boise.",
+  "I started this company after years of watching capable local service businesses pay good money to agencies that sold them one piece of a system and called it marketing. SEO retainer over here. A few hundred bucks a month in ads over there. A website that looked nice but didn't generate anything. Meanwhile the actual machine that drives compounding local leads, the one that connects all of it, sat un-installed in their business.",
+  "It made me a little crazy, honestly. These were good operators. Real businesses. Solid work. They just kept hiring vendors who were happy to sell features and ghost on outcomes.",
+  "So I built the agency I wished those owners had been able to hire. End to end. Run by the person who built it. No account managers, no handoffs, no junior trying to find your business on a map. If you sign with Velocity, you're working with me directly. That's the deal.",
+];
+
+const aboutBeats = [
+  "I'm direct. I'll tell you what I think will work and what I don't think is worth your money, even when what I don't think is worth your money is one of our own services. I'd rather lose a sale than sell you something you don't need.",
+  "I answer my own phone. If you text me on a Tuesday, you'll hear back from me on Tuesday, not from someone copied on the thread three layers down.",
+  "I care about local. I live here. The businesses we help are the ones I drive past on my way home. The work is personal in a way it can't be when the agency is in another time zone.",
+];
+
 const testimonials = [
   {
     q: "The missed-call text-back paid for the first 6 months in one week. Caught a roof job that would have gone to a competitor.",
     n: "Carlos R.",
-    r: "Painter · Boise, ID",
+    r: "Painter, Boise, ID",
+    initials: "CR",
   },
   {
     q: "I was ranked 8th. Now I'm ranked first in two cities and second in the third. Calls have basically tripled.",
     n: "Lisa M.",
-    r: "Med Spa Owner · Eagle, ID",
+    r: "Med Spa Owner, Eagle, ID",
+    initials: "LM",
   },
   {
     q: "I thought I needed to spend on ads. Turns out I just needed someone running the system every week. The needle started moving in week three and hasn't stopped.",
     n: "Daniel",
-    r: "HVAC Co. Owner · Ada County, ID",
+    r: "HVAC Owner, Ada County, ID",
+    initials: "DA",
   },
 ];
 
-const closeBlocks = [
+const faqs = [
   {
-    h: "Why now",
-    p: "We work with one client per category, per city. The slot in your industry, in your service area, is either available right now or it isn't.",
+    q: "How long until I see leads?",
+    a: "Most clients see qualified leads inside the first 60 days. Some see them in week three. The variable isn't the system, it's where your business is starting from (existing Google presence, review count, market competitiveness).",
   },
   {
-    h: "What happens on the call",
-    p: "We look at your current Google presence and lead flow together. No homework, no slide deck. You leave with a free Google Review App — yours forever — and a clear read on what installing the system would change for your business.",
+    q: "What if I'm already running ads?",
+    a: "Good. We'll audit what's running, fix what's broken, and plug it into the rest of the system. You don't lose what you've already built.",
   },
   {
-    h: "What you have to lose",
-    p: "Nothing. The Review App is yours regardless. The call is free. If we're not a fit, we tell you and point you somewhere useful.",
+    q: "Do you handle my Google Business Profile, or do I?",
+    a: "We handle it. You don't touch a thing unless you want to. Most owners hand us the keys on day one and never look back.",
+  },
+  {
+    q: "Do I have to sign a contract?",
+    a: "No. Month to month. You stay because it's working.",
+  },
+  {
+    q: "What does it cost?",
+    a: "Depends on what your business needs. We don't believe in flat-rate packages that pretend every business is the same. The 45-minute call gives you a real number based on what's actually right for you, not a guess.",
+  },
+  {
+    q: "What if it doesn't work?",
+    a: "Then it doesn't work and we both move on. Month-to-month means you're never trapped paying for something that isn't producing.",
   },
 ];
 ---
 
-<!doctype html>
-<html lang="en" data-theme="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Velocity Web Studio — More local customers from Google, guaranteed
-    </title>
-    <meta
-      name="description"
-      content="We install the Google-first lead system end-to-end for local service businesses in Boise & the Treasure Valley. 5 qualified leads in 60 days, or we work free until you get them."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+<BaseLayout>
+  <!-- NAV -->
+  <header
+    class="sticky top-0 z-50 backdrop-blur-md bg-ink/80 border-b border-cream/5"
+  >
+    <div
+      class="max-w-6xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between"
+    >
+      <a
+        href="/"
+        class="flex items-center gap-2.5"
+        aria-label="Velocity Web Studio home"
+      >
+        <span
+          class="inline-flex h-2.5 w-2.5 rounded-full bg-brand-500 shadow-[0_0_12px_var(--color-brand-500)]"
+          aria-hidden="true"></span>
+        <span class="font-display font-extrabold tracking-tight text-cream text-[17px]">
+          Velocity <span class="text-brand-500">Web</span>
+        </span>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium">
+        <a href="#problem" class="text-cream/70 hover:text-cream transition"
+          >Problem</a
+        >
+        <a href="#solution" class="text-cream/70 hover:text-cream transition"
+          >Solution</a
+        >
+        <a href="#about" class="text-cream/70 hover:text-cream transition"
+          >About</a
+        >
+        <a href="#faq" class="text-cream/70 hover:text-cream transition">FAQ</a>
+      </nav>
+      <a
+        href={calendarUrl}
+        class="inline-flex items-center gap-1.5 rounded-full bg-brand-500 text-cream px-4 py-2 text-sm font-bold hover:bg-brand-600 transition shadow-lg shadow-brand-500/20"
+      >
+        Book a Call
+      </a>
+    </div>
+  </header>
 
-  <body>
-    <div class="outer">
-      <div class="page">
-        <header class="topbar">
-          <a class="brand" href="/">Velocity <em>Web</em></a>
-          <nav class="nav">
-            <button
-              class="theme-toggle"
-              id="themeToggle"
-              aria-label="Toggle light/dark mode"
-            >
-              <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"
-                ><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"
-                ></path></svg
-              >
-              <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"
-                ><path
-                  d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0-14a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1zm0 16a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1zm9-9a1 1 0 0 1 0 2h-1a1 1 0 1 1 0-2h1zM5 12a1 1 0 0 1-1 1H3a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1zm12.66-6.24a1 1 0 0 1 0 1.41l-.71.71a1 1 0 1 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 0zM7.05 17.66a1 1 0 0 1 0 1.41l-.71.71a1 1 0 1 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 0zm11.32 0a1 1 0 0 1-1.41 1.41l-.71-.71a1 1 0 1 1 1.41-1.41l.71.71zM7.05 6.34a1 1 0 0 1-1.41 0l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41z"
-                ></path></svg
-              >
-            </button>
-            <a href={calendarUrl} class="nav-cta">Book a Call</a>
-          </nav>
-        </header>
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div
+      aria-hidden
+      class="absolute -top-32 -right-40 h-[500px] w-[500px] rounded-full bg-brand-500/15 blur-3xl"
+    >
+    </div>
+    <div
+      aria-hidden
+      class="absolute top-40 -left-40 h-[420px] w-[420px] rounded-full bg-brand-600/10 blur-3xl"
+    >
+    </div>
 
-        <section class="hero">
-          <div class="eyebrow">
-            <span class="edot"></span> For local service businesses in Boise &amp;
-            the Treasure Valley <span class="edot"></span>
-          </div>
-          <h1 class="h1">
-            <span class="h1-line">More local customers from Google</span>
-            <span class="h1-line h1-accent"
-              >— or we work free until you get them.</span
-            >
-          </h1>
-          <p class="lede">
-            We install the Google-first lead system end to end. 5 qualified
-            leads in 60 days, guaranteed, or our recurring fee doesn't start.
+    <div
+      class="relative max-w-4xl mx-auto px-6 lg:px-8 pt-20 lg:pt-28 pb-20 lg:pb-24 text-center"
+    >
+      <div
+        class="inline-flex items-center gap-2 rounded-full border border-cream/10 bg-ink-2/70 px-3 py-1.5 text-xs font-semibold tracking-wide uppercase text-cream/65 backdrop-blur"
+      >
+        <span class="h-1.5 w-1.5 rounded-full bg-brand-500 animate-pulse"
+        ></span>
+        Free tool for local service businesses
+      </div>
+
+      <h1
+        class="mt-7 font-display text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[0.98] text-balance text-cream"
+      >
+        Get more 5-star Google reviews.
+        <span class="block mt-2 text-cream/40">
+          <span
+            class="bg-gradient-to-r from-brand-500 via-brand-600 to-brand-400 bg-clip-text text-transparent"
+            >Catch the bad ones</span
+          >
+          before they go public.
+        </span>
+      </h1>
+
+      <p
+        class="mt-7 text-lg md:text-xl text-cream/60 max-w-2xl mx-auto leading-relaxed text-pretty"
+      >
+        We built a free done-for-you review tool and we'll set it up for your
+        business inside 48 hours. It sends your happy customers straight to
+        your Google review page. It routes the unhappy ones to a private form
+        so you can fix the issue before it ever lands on your profile. Yours
+        to keep, no strings.
+      </p>
+
+      <form
+        class="mt-10 mx-auto max-w-xl flex flex-col sm:flex-row gap-2 p-2 rounded-2xl bg-ink-2 ring-1 ring-cream/10 shadow-2xl shadow-black/40"
+        id="leadForm"
+        novalidate
+      >
+        <label class="sr-only" for="leadEmail">Your business email</label>
+        <input
+          class="flex-1 bg-transparent px-4 py-3 text-base text-cream placeholder:text-cream/40 outline-none rounded-xl focus:bg-ink-3 transition"
+          type="email"
+          id="leadEmail"
+          name="email"
+          placeholder="Your business email"
+          required
+          autocomplete="email"
+        />
+        <button
+          class="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-500 text-cream px-6 py-3 text-sm font-bold hover:bg-brand-600 transition whitespace-nowrap shadow-lg shadow-brand-500/25"
+          type="submit"
+        >
+          <span class="lead-submit-label">Get my free review tool</span>
+          <span aria-hidden>→</span>
+        </button>
+      </form>
+
+      <p class="mt-4 text-sm text-cream/55">
+        Live in 48 hours. Yours forever, even if we never work together again.
+      </p>
+
+      <p
+        class="mt-10 text-sm text-cream/45 tracking-wide"
+      >
+        Built for local service businesses across Boise and the Treasure
+        Valley.
+      </p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="relative bg-ink-2 border-y border-cream/5">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-24">
+      <div class="max-w-3xl mx-auto text-center">
+        <p
+          class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-500"
+        >
+          <span class="h-px w-8 bg-brand-500"></span>Local search reality
+          <span class="h-px w-8 bg-brand-500"></span>
+        </p>
+        <h2
+          class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-balance text-cream"
+        >
+          The customers are already searching. The only question is whether
+          your business shows up.
+        </h2>
+      </div>
+
+      <div class="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-5">
+        {
+          stats.map((s) => (
+            <div class="rounded-2xl bg-ink-3 p-6 ring-1 ring-cream/5 text-center">
+              <p class="text-4xl lg:text-5xl font-extrabold tracking-tight bg-gradient-to-br from-brand-500 to-brand-400 bg-clip-text text-transparent">
+                {s.n}
+              </p>
+              <p class="mt-3 text-sm text-cream/65 leading-snug text-pretty">
+                {s.l}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+
+      <p
+        class="mt-10 text-center text-lg text-cream/75 max-w-2xl mx-auto text-pretty"
+      >
+        If your business isn't installed as the answer to those searches, the
+        business down the street is.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section id="problem" class="relative bg-ink">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+      <div class="text-center">
+        <p
+          class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-500"
+        >
+          <span class="h-px w-8 bg-brand-500"></span>The real problem
+        </p>
+        <h2
+          class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] text-balance text-cream"
+        >
+          You're not behind because you're bad at marketing.
+          <span class="text-brand-500"
+            >You're behind because nobody installed the system.</span
+          >
+        </h2>
+      </div>
+
+      <div class="mt-12 space-y-6 text-lg leading-relaxed text-pretty">
+        <p class="text-cream/85 font-medium">
+          You already have customers. You're a good operator. The work you do
+          is solid. The reason your phone isn't ringing the way it should
+          isn't a skill problem.
+        </p>
+
+        <ul class="space-y-3">
+          {
+            problemPoints.map((p) => (
+              <li class="flex items-start gap-3 rounded-xl bg-ink-2 ring-1 ring-cream/5 p-4 text-cream/80">
+                <span
+                  class="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-500/15 text-brand-500 text-[11px] font-black"
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+                <span>{p}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <p class="text-cream/60">
+          Nobody can do all of that themselves. The owners winning in your
+          market aren't doing it themselves either. They installed the system
+          that does it for them.
+        </p>
+
+        <p
+          class="relative rounded-2xl bg-ink-2 ring-1 ring-cream/5 p-6 text-xl font-semibold leading-snug text-pretty text-cream"
+        >
+          <span
+            aria-hidden
+            class="absolute left-0 top-4 bottom-4 w-1 rounded-r-full bg-brand-500"
+          ></span>
+          <span class="block pl-3">
+            That's the gap. Not your skill. Not your effort. The system.
+          </span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFERENTIATORS -->
+  <section id="solution" class="relative bg-ink-2 border-y border-cream/5">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+      <div class="max-w-3xl mx-auto text-center">
+        <p
+          class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-500"
+        >
+          <span class="h-px w-8 bg-brand-500"></span>The solution
+        </p>
+        <h2
+          class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-balance text-cream"
+        >
+          Why this works when the other things haven't.
+        </h2>
+      </div>
+
+      <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {
+          differentiators.map((d, i) => (
+            <div class="group relative rounded-2xl bg-ink-3 p-7 ring-1 ring-cream/5 hover:ring-brand-500/40 hover:shadow-xl hover:shadow-brand-500/5 transition-all">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-cream/30">
+                0{i + 1}
+              </span>
+              <h3 class="mt-3 text-lg font-bold tracking-tight text-brand-500 leading-snug">
+                {d.h}
+              </h3>
+              <p class="mt-3 text-[15px] text-cream/65 leading-relaxed text-pretty">
+                {d.p}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="relative bg-ink">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+      <div class="max-w-3xl mx-auto text-center">
+        <p
+          class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-500"
+        >
+          <span class="h-px w-8 bg-brand-500"></span>How it works
+        </p>
+        <h2
+          class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-balance text-cream"
+        >
+          What happens after you sign.
+        </h2>
+      </div>
+
+      <ol class="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {
+          process.map((step, i) => (
+            <li class="relative rounded-2xl bg-ink-2 p-6 ring-1 ring-cream/5 h-full flex flex-col">
+              <p class="text-5xl font-extrabold tracking-tight bg-gradient-to-br from-brand-500 to-brand-400 bg-clip-text text-transparent leading-none">
+                0{i + 1}
+              </p>
+              <p class="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-cream/45">
+                {step.when}
+              </p>
+              <h3 class="mt-1 text-lg font-bold tracking-tight text-cream">
+                {step.h}
+              </h3>
+              <p class="mt-3 text-sm text-cream/65 leading-relaxed text-pretty flex-1">
+                {step.p}
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="relative bg-ink-2 border-y border-cream/5">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+      <div class="grid lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-7 order-2 lg:order-1">
+          <p
+            class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-500"
+          >
+            <span class="h-px w-8 bg-brand-500"></span>About
           </p>
-          <a href={calendarUrl} class="cta-primary">
-            <span class="cta-body">
-              <span class="cta-title">Book my free 45-minute install call</span>
-              <span class="cta-sub"
-                >You leave with a free Google Review App — yours forever.</span
-              >
-            </span>
-            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"
-              ><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"
-              ></path></svg
-            >
-          </a>
-          <ul class="trust-strip">
+          <h2
+            class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-balance text-cream"
+          >
+            The guy who'll actually be running your account.
+          </h2>
+
+          <div class="mt-8 space-y-5 text-lg leading-relaxed text-cream/70 text-pretty">
+            {aboutParas.map((p) => <p>{p}</p>)}
+          </div>
+
+          <p class="mt-8 text-cream font-semibold">
+            A few things you should know about how I work:
+          </p>
+          <ul class="mt-4 space-y-3">
             {
-              trustStrip.map((t) => (
-                <li>
-                  <span class="check">✓</span> {t}
+              aboutBeats.map((b) => (
+                <li class="flex items-start gap-3 text-cream/75 leading-relaxed text-pretty">
+                  <span
+                    class="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-500/15 text-brand-500 text-[11px] font-black"
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                  <span>{b}</span>
                 </li>
               ))
             }
           </ul>
-        </section>
 
-        <section class="band band-alt">
-          <div class="section-head">
-            <span class="kicker">Local Search Reality</span>
-            <h2 class="h2">
-              The customers are already searching. The question is whether your
-              business shows up.
-            </h2>
-          </div>
-          <div class="stats">
-            {
-              stats.map((s) => (
-                <div class="stat">
-                  <div class="stat-n">{s.n}</div>
-                  <div class="stat-l">{s.l}</div>
-                </div>
-              ))
-            }
-          </div>
-          <p class="band-tail">
-            If your business isn't installed as the answer to those searches,
-            the business down the street is.
+          <p
+            class="mt-8 relative rounded-2xl bg-ink-3 ring-1 ring-cream/5 p-6 text-lg font-medium leading-snug text-pretty text-cream"
+          >
+            <span
+              aria-hidden
+              class="absolute left-0 top-4 bottom-4 w-1 rounded-r-full bg-brand-500"
+            ></span>
+            <span class="block pl-3">
+              If we work together, you'll hear from me regularly. Not a
+              portal. Not a robot. Me.
+            </span>
           </p>
-        </section>
 
-        <section class="band">
-          <div class="section-head">
-            <span class="kicker">Audience</span>
-            <h2 class="h2">
-              You're not behind because you're bad at marketing. You're behind
-              because nobody installed the system.
-            </h2>
-          </div>
-          <div class="audience-body">
-            <p class="audience-intro">
-              You already have customers. You're a good operator. The work you
-              do is solid. The reason your phone isn't ringing the way it should
-              isn't a skill problem.
-            </p>
-            <ul class="audience-list">
-              {audiencePoints.map((p) => <li>{p}</li>)}
-            </ul>
-            <p class="audience-tail">
-              Nobody can do all that themselves. The owners winning aren't doing
-              it themselves either. They installed the system that does it for
-              them.
-            </p>
-            <p class="audience-emph">
-              That's the gap. Not your skill. Not your effort. The system.
-            </p>
-          </div>
-        </section>
+          <p class="mt-5 text-sm text-cream/45 italic">
+            Richard Prins, Velocity Web Studio
+          </p>
+        </div>
 
-        <section class="band band-alt">
-          <div class="section-head">
-            <span class="kicker">Solution</span>
-            <h2 class="h2">Why this works when the other things haven't.</h2>
-          </div>
-          <div class="differentiators">
-            {
-              differentiators.map((d) => (
-                <div class="diff-card">
-                  <div class="diff-h">{d.h}</div>
-                  <div class="diff-p">{d.p}</div>
-                </div>
-              ))
-            }
-          </div>
-        </section>
-
-        <section class="band" id="about">
-          <div class="section-head">
-            <span class="kicker">About</span>
-            <h2 class="h2">Why you can trust this is different.</h2>
-          </div>
-          <div class="identity">
-            <div class="identity-body">
-              <p>I'm Richard Prins. I run Velocity Web Studio out of Boise.</p>
-              <p>
-                I started the company after years of watching capable local
-                service businesses pay for ads, SEO retainers, and website
-                rebuilds — while the system that actually generates compounding
-                leads sat un-installed in their business. Most agencies sell
-                features. Almost nobody installs the end-to-end system.
-              </p>
-              <p>
-                We do. One client per category, per city. Guaranteed in 60 days.
-                Run by the team that builds it — no account managers, no
-                handoffs, no layers between you and the people doing the work.
-              </p>
-              <p class="identity-emph">
-                If you take nothing else from this page, take this: the leads
-                you're losing this week already cost you to acquire. We just
-                built the system so you stop losing them.
-              </p>
+        <div class="lg:col-span-5 order-1 lg:order-2">
+          <div class="relative max-w-sm mx-auto lg:mx-0 lg:ml-auto">
+            <div
+              aria-hidden
+              class="absolute -inset-4 rounded-3xl bg-brand-500/15 blur-2xl"
+            >
             </div>
-            <div class="identity-photo-wrap">
+            <div
+              class="relative rounded-3xl overflow-hidden ring-1 ring-cream/10 shadow-2xl shadow-black/40"
+            >
               <img
-                class="identity-photo"
                 src={headshot.src}
                 alt="Richard Prins, Velocity Web Studio"
+                class="w-full aspect-square object-cover object-[center_18%]"
+                loading="lazy"
               />
-              <div class="identity-cap">
-                Richard Prins · Velocity Web Studio
-              </div>
+            </div>
+            <div
+              class="absolute -bottom-3 -left-3 inline-flex items-center gap-2 rounded-full bg-ink-3 px-3 py-1.5 text-xs font-bold ring-1 ring-cream/10 shadow-lg text-cream"
+            >
+              <span
+                class="inline-flex h-1.5 w-1.5 rounded-full bg-brand-500"
+              ></span>
+              Boise, Idaho
             </div>
           </div>
-        </section>
-
-        <section class="band band-alt">
-          <div class="section-head">
-            <span class="kicker">Testimonials</span>
-            <h2 class="h2">How you know this is real.</h2>
-          </div>
-          <div class="testimonials">
-            {
-              testimonials.map((t) => (
-                <figure class="testimonial">
-                  <blockquote class="t-quote">{t.q}</blockquote>
-                  <figcaption class="t-cap">
-                    <span class="t-name">— {t.n}</span>
-                    <span class="t-role">{t.r}</span>
-                  </figcaption>
-                </figure>
-              ))
-            }
-          </div>
-          <p class="testimonials-disclaimer">
-            Testimonials reflect representative client outcomes. Real attributed
-            reviews available on request.
-          </p>
-        </section>
-
-        <section class="band band-close">
-          <div class="close">
-            <div class="section-head">
-              <span class="kicker">Book your call</span>
-              <h2 class="h2">Book your free 45-minute install call.</h2>
-            </div>
-            <div class="close-grid">
-              {
-                closeBlocks.map((b) => (
-                  <div class="close-block">
-                    <div class="close-block-h">{b.h}</div>
-                    <p>{b.p}</p>
-                  </div>
-                ))
-              }
-            </div>
-            <iframe
-              src="https://api.velocitywebstudio.com/widget/booking/mcWyJi4NDQ1tg3JDZlYS"
-              style="width: 100%;border:none;overflow: hidden;"
-              scrolling="no"
-              id="mcWyJi4NDQ1tg3JDZlYS_1778882671507"></iframe><br /><script
-              is:inline
-              src="https://api.velocitywebstudio.com/js/form_embed.js"
-              type="text/javascript"></script>
-          </div>
-        </section>
-
-        <footer class="footer">
-          <div class="footer-row">
-            <span class="fname">Velocity Web Studio</span>
-            <span class="fdot" aria-hidden="true"></span>
-            <span class="fmeta">Boise, Idaho</span>
-          </div>
-          <div class="footer-tagline">
-            5 qualified leads in 60 days, or we work free until you do
-          </div>
-          <div class="footer-row footer-links">
-            <a href="/links">Links</a>
-            <span class="fsep" aria-hidden="true">·</span>
-            <a href="/services">Services</a>
-            <span class="fsep" aria-hidden="true">·</span>
-            <a href="#about">About</a>
-            <span class="fsep" aria-hidden="true">·</span>
-            <a href={calendarUrl}>Book a Call</a>
-          </div>
-        </footer>
+        </div>
       </div>
     </div>
+  </section>
 
-    <style is:global>
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+  <!-- TESTIMONIALS -->
+  <section class="relative bg-ink">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+      <div class="max-w-3xl mx-auto text-center">
+        <p
+          class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-500"
+        >
+          <span class="h-px w-8 bg-brand-500"></span>Testimonials
+        </p>
+        <h2
+          class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-balance text-cream"
+        >
+          How you know this is real.
+        </h2>
+      </div>
 
-      :root {
-        --orange: #ee4000;
-        --orange-hv: #ff6b35;
-        --orange-glow: rgba(238, 64, 0, 0.24);
-      }
-
-      [data-theme="dark"] {
-        --bg: #0c0c0c;
-        --bg-2: #161616;
-        --bg-3: #202020;
-        --fg: #ffffff;
-        --fg-muted: #999999;
-        --fg-dim: #555555;
-        --border: rgba(255, 255, 255, 0.07);
-        --border-hv: rgba(255, 255, 255, 0.13);
-        --outer-bg: #080808;
-        --band-alt: #0f0f0f;
-      }
-
-      [data-theme="light"] {
-        --bg: #ffffff;
-        --bg-2: #faf8f5;
-        --bg-3: #f1ede7;
-        --fg: #0c0c0c;
-        --fg-muted: #4a4a4a;
-        --fg-dim: #9a9a9a;
-        --border: rgba(0, 0, 0, 0.08);
-        --border-hv: rgba(0, 0, 0, 0.18);
-        --outer-bg: #ffffff;
-        --band-alt: #f7f4f1;
-      }
-
-      html,
-      body {
-        font-family: "DM Sans", sans-serif;
-        background: var(--outer-bg);
-        min-height: 100vh;
-        color: var(--fg);
-        transition:
-          background 0.3s,
-          color 0.3s;
-      }
-
-      .outer {
-        display: flex;
-        justify-content: center;
-        min-height: 100vh;
-        background: var(--outer-bg);
-        transition: background 0.3s;
-      }
-
-      .page {
-        width: 100%;
-        background: var(--bg);
-        color: var(--fg);
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        transition:
-          background 0.3s,
-          color 0.3s;
-      }
-
-      /* ── CONTAINER SYSTEM ──
-         Bands and hero are full-bleed; inner content is centered + constrained.
-         Default container: 1120px (grids, multi-column).
-         Narrow container: 760px (prose). */
-      .topbar,
-      .footer,
-      .hero > *,
-      .band > * {
-        max-width: 1120px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .hero > .eyebrow,
-      .hero > .h1,
-      .hero > .lede,
-      .hero > .micro,
-      .hero > .trust-strip,
-      .band > .section-head,
-      .band > .band-tail,
-      .band > .audience-body,
-      .band > .testimonials-disclaimer {
-        max-width: 760px;
-      }
-
-      /* ── TOPBAR ── */
-      .topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 18px 24px 0;
-        width: 100%;
-      }
-      .brand {
-        font-weight: 800;
-        font-size: 18px;
-        letter-spacing: -0.5px;
-        color: var(--fg);
-        text-decoration: none;
-      }
-      .brand em {
-        font-style: normal;
-        color: var(--orange);
-      }
-      .nav {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-      }
-      .nav-cta {
-        background: var(--orange);
-        color: #fff;
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 0.2px;
-        padding: 9px 14px;
-        border-radius: 99px;
-        text-decoration: none;
-        transition:
-          background 0.15s,
-          transform 0.1s;
-        white-space: nowrap;
-      }
-      .nav-cta:hover {
-        background: var(--orange-hv);
-      }
-      .nav-cta:active {
-        transform: scale(0.97);
-      }
-      .theme-toggle {
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        border: 1px solid var(--border);
-        background: transparent;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition:
-          transform 0.15s,
-          border-color 0.15s;
-      }
-      .theme-toggle:hover {
-        transform: scale(1.06);
-        border-color: var(--border-hv);
-      }
-      .theme-toggle svg {
-        width: 14px;
-        height: 14px;
-        fill: var(--fg-muted);
-      }
-      .icon-sun {
-        display: none;
-      }
-      .icon-moon {
-        display: block;
-      }
-      [data-theme="light"] .icon-sun {
-        display: block;
-      }
-      [data-theme="light"] .icon-moon {
-        display: none;
-      }
-
-      /* ── HERO ── */
-      .hero {
-        padding: 56px 24px 56px;
-        text-align: center;
-      }
-      .eyebrow {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 2.4px;
-        text-transform: uppercase;
-        color: var(--orange);
-        margin-bottom: 24px;
-        justify-content: center;
-      }
-      .edot {
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        background: var(--orange);
-      }
-      .h1 {
-        font-family: "DM Sans", sans-serif;
-        font-weight: 800;
-        font-size: 40px;
-        line-height: 1.06;
-        letter-spacing: -1.2px;
-        color: var(--fg);
-        margin-bottom: 22px;
-      }
-      .h1-line {
-        display: block;
-      }
-      .h1-accent {
-        color: var(--orange);
-      }
-      .lede {
-        font-size: 17px;
-        line-height: 1.55;
-        color: var(--fg-muted);
-        max-width: 580px;
-        margin: 0 auto 28px;
-      }
-
-      /* ── PRIMARY CTA ── */
-      .cta-primary {
-        display: flex;
-        align-items: center;
-        gap: 13px;
-        background: var(--orange);
-        color: #fff;
-        border-radius: 14px;
-        padding: 18px 18px;
-        text-decoration: none;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 6px 24px var(--orange-glow);
-        transition:
-          background 0.18s,
-          box-shadow 0.18s,
-          transform 0.12s;
-        max-width: 480px;
-        margin: 0 auto;
-        text-align: left;
-      }
-      .cta-primary::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50%;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.09),
-          transparent
-        );
-        pointer-events: none;
-      }
-      .cta-primary:hover {
-        background: var(--orange-hv);
-        box-shadow: 0 10px 32px rgba(238, 64, 0, 0.35);
-      }
-      .cta-primary:active {
-        transform: scale(0.98);
-      }
-      .cta-primary-lg {
-        max-width: 560px;
-      }
-      .cta-body {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 3px;
-      }
-      .cta-title {
-        font-weight: 700;
-        font-size: 15px;
-        line-height: 1.2;
-      }
-      .cta-sub {
-        font-size: 12.5px;
-        opacity: 0.85;
-        font-weight: 300;
-      }
-      .chev {
-        width: 16px;
-        height: 16px;
-        fill: #fff;
-        flex-shrink: 0;
-      }
-
-      /* ── TRUST STRIP ── */
-      .trust-strip {
-        list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px 22px;
-        margin-top: 28px;
-      }
-      .trust-strip li {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 13px;
-        color: var(--fg-muted);
-      }
-      .check {
-        color: var(--orange);
-        font-weight: 700;
-      }
-
-      /* ── BANDS ── */
-      .band {
-        padding: 64px 24px;
-        border-top: 1px solid var(--border);
-      }
-      .band-alt {
-        background: var(--band-alt);
-      }
-      .section-head {
-        margin-bottom: 36px;
-        text-align: center;
-      }
-      .kicker {
-        display: inline-block;
-        font-size: 10.5px;
-        font-weight: 700;
-        letter-spacing: 2.4px;
-        text-transform: uppercase;
-        color: var(--orange);
-        margin-bottom: 14px;
-      }
-      .h2 {
-        font-family: "DM Sans", sans-serif;
-        font-weight: 700;
-        font-size: 26px;
-        line-height: 1.2;
-        letter-spacing: -0.6px;
-        color: var(--fg);
-      }
-
-      /* ── STATS ── */
-      .stats {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 28px 18px;
-        margin-bottom: 36px;
-      }
-      .stat {
-        text-align: center;
-      }
-      .stat-n {
-        font-weight: 800;
-        font-size: 48px;
-        line-height: 1;
-        letter-spacing: -1.6px;
-        color: var(--orange);
-        margin-bottom: 10px;
-      }
-      .stat-l {
-        font-size: 13.5px;
-        line-height: 1.45;
-        color: var(--fg-muted);
-      }
-      .band-tail {
-        text-align: center;
-        font-size: 16px;
-        line-height: 1.6;
-        color: var(--fg);
-      }
-
-      /* ── AUDIENCE ── */
-      .audience-body {
-        display: flex;
-        flex-direction: column;
-        gap: 22px;
-      }
-      .audience-intro {
-        font-size: 18px;
-        line-height: 1.55;
-        color: var(--fg);
-        font-weight: 500;
-      }
-      .audience-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-      .audience-list li {
-        position: relative;
-        padding-left: 28px;
-        font-size: 15.5px;
-        line-height: 1.6;
-        color: var(--fg);
-      }
-      .audience-list li::before {
-        content: "→";
-        position: absolute;
-        left: 0;
-        top: 0;
-        color: var(--orange);
-        font-weight: 700;
-      }
-      .audience-tail {
-        font-size: 15.5px;
-        line-height: 1.65;
-        color: var(--fg-muted);
-      }
-      .audience-emph {
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 1.35;
-        color: var(--fg);
-        border-left: 3px solid var(--orange);
-        padding-left: 16px;
-        margin-top: 6px;
-      }
-
-      /* ── DIFFERENTIATORS ── */
-      .differentiators {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .diff-card {
-        padding: 24px 22px;
-        background: var(--bg-2);
-        border: 1px solid var(--border);
-        border-radius: 14px;
-      }
-      .diff-h {
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 1.3;
-        letter-spacing: -0.3px;
-        color: var(--orange);
-        margin-bottom: 10px;
-      }
-      .diff-p {
-        font-size: 14.5px;
-        line-height: 1.6;
-        color: var(--fg-muted);
-      }
-
-      /* ── IDENTITY / ABOUT ── */
-      .identity {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      .identity-body {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        font-size: 15.5px;
-        line-height: 1.7;
-        color: var(--fg-muted);
-      }
-      .identity-body p {
-        color: var(--fg-muted);
-      }
-      .identity-emph {
-        font-size: 17px !important;
-        font-weight: 500;
-        color: var(--fg) !important;
-        border-left: 3px solid var(--orange);
-        padding-left: 16px;
-        margin-top: 6px;
-      }
-      .identity-photo-wrap {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-      }
-      .identity-photo {
-        width: 100%;
-        max-width: 340px;
-        aspect-ratio: 1;
-        object-fit: cover;
-        object-position: center 18%;
-        border-radius: 16px;
-        border: 1px solid var(--border);
-      }
-      .identity-cap {
-        font-size: 12.5px;
-        color: var(--fg-dim);
-        letter-spacing: 0.3px;
-        text-align: center;
-      }
-
-      /* ── TESTIMONIALS ── */
-      .testimonials {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .testimonial {
-        padding: 24px 22px;
-        background: var(--bg-2);
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-      }
-      .t-quote {
-        font-size: 15.5px;
-        line-height: 1.6;
-        color: var(--fg);
-        font-style: italic;
-        position: relative;
-        padding-left: 6px;
-      }
-      .t-quote::before {
-        content: "“";
-        position: absolute;
-        left: -6px;
-        top: -16px;
-        font-family: Georgia, serif;
-        font-size: 44px;
-        color: var(--orange);
-        line-height: 1;
-        opacity: 0.7;
-      }
-      .t-cap {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-      }
-      .t-name {
-        font-weight: 700;
-        font-size: 14px;
-        color: var(--fg);
-      }
-      .t-role {
-        font-size: 12.5px;
-        color: var(--fg-muted);
-      }
-      .testimonials-disclaimer {
-        margin-top: 28px;
-        text-align: center;
-        font-size: 12px;
-        color: var(--fg-dim);
-        font-style: italic;
-      }
-
-      /* ── CLOSE ── */
-      .band-close {
-        padding-bottom: 80px;
-      }
-      .close {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .close-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
-        margin: 8px 0 32px;
-      }
-      .close-block {
-        padding: 22px 22px;
-        background: var(--bg-2);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-      }
-      .close-block-h {
-        font-weight: 700;
-        font-size: 12px;
-        letter-spacing: 1.4px;
-        text-transform: uppercase;
-        color: var(--orange);
-        margin-bottom: 10px;
-      }
-      .close-block p {
-        font-size: 14.5px;
-        line-height: 1.6;
-        color: var(--fg-muted);
-      }
-
-      /* ── FOOTER ── */
-      .footer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        text-align: center;
-        border-top: 1px solid var(--border);
-        padding: 36px 24px 48px;
-        width: 100%;
-      }
-      .footer-row {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-        font-size: 13px;
-        color: var(--fg-muted);
-      }
-      .fname {
-        font-weight: 700;
-        color: var(--fg);
-      }
-      .fdot {
-        width: 3px;
-        height: 3px;
-        border-radius: 50%;
-        background: var(--orange);
-        opacity: 0.65;
-      }
-      .fmeta {
-        color: var(--fg-muted);
-      }
-      .footer-tagline {
-        font-size: 13px;
-        color: var(--fg-muted);
-        font-style: italic;
-      }
-      .footer-links a {
-        color: var(--fg-muted);
-        text-decoration: none;
-        transition: color 0.15s;
-      }
-      .footer-links a:hover {
-        color: var(--orange);
-      }
-      .fsep {
-        color: var(--fg-dim);
-      }
-
-      /* ── RESPONSIVE ── */
-      @media (min-width: 640px) {
-        .h1 {
-          font-size: 54px;
-          letter-spacing: -1.8px;
+      <div class="mt-14 grid md:grid-cols-3 gap-5">
+        {
+          testimonials.map((t, i) => (
+            <figure
+              class:list={[
+                "relative flex flex-col rounded-2xl p-7 ring-1 transition-all",
+                i === 1
+                  ? "bg-ink-3 ring-brand-500/30 shadow-xl shadow-brand-500/5"
+                  : "bg-ink-2 ring-cream/5 hover:ring-cream/15",
+              ]}
+            >
+              <span class="text-5xl font-extrabold leading-none text-brand-500">
+                "
+              </span>
+              <blockquote class="mt-2 text-base leading-relaxed font-medium text-pretty flex-1 text-cream">
+                {t.q}
+              </blockquote>
+              <figcaption class="mt-6 flex items-center gap-3">
+                <span class="h-10 w-10 rounded-full bg-gradient-to-br from-brand-500 to-brand-400 flex items-center justify-center text-xs font-black text-cream shrink-0">
+                  {t.initials}
+                </span>
+                <div>
+                  <p class="text-sm font-bold text-cream">{t.n}</p>
+                  <p class="text-xs text-cream/55">{t.r}</p>
+                </div>
+              </figcaption>
+            </figure>
+          ))
         }
-        .h2 {
-          font-size: 32px;
-        }
-        .hero {
-          padding: 96px 36px 80px;
-        }
-        .band {
-          padding: 88px 36px;
-        }
-        .topbar {
-          padding: 22px 36px 0;
-        }
-        .footer {
-          padding: 40px 36px 56px;
-        }
-        .stats {
-          grid-template-columns: repeat(4, 1fr);
-          gap: 24px 18px;
-        }
-        .stat-n {
-          font-size: 56px;
-        }
-        .differentiators {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .diff-card:nth-child(5) {
-          grid-column: 1 / -1;
-        }
-        .testimonials {
-          grid-template-columns: repeat(3, 1fr);
-        }
-        .close-grid {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
+      </div>
 
-      @media (min-width: 880px) {
-        .identity {
-          grid-template-columns: 1.4fr 1fr;
-          align-items: start;
-          gap: 56px;
-        }
-      }
+      <p class="mt-8 text-center text-xs text-cream/40 italic">
+        Testimonials reflect representative client outcomes. Real attributed
+        reviews available on request.
+      </p>
+    </div>
+  </section>
 
-      @media (min-width: 960px) {
-        .h1 {
-          font-size: 64px;
-          letter-spacing: -2.2px;
-        }
-        .h2 {
-          font-size: 36px;
-          letter-spacing: -0.8px;
-        }
-        .hero {
-          padding: 120px 48px 96px;
-        }
-        .band {
-          padding: 104px 48px;
-        }
-        .topbar {
-          padding: 26px 48px 0;
-        }
-        .footer {
-          padding: 48px 48px 64px;
-        }
-        .stat-n {
-          font-size: 72px;
-          letter-spacing: -2.4px;
-        }
-      }
-    </style>
+  <!-- FAQ -->
+  <section id="faq" class="relative bg-ink-2 border-y border-cream/5">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+      <div class="text-center max-w-2xl mx-auto">
+        <p
+          class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-500"
+        >
+          <span class="h-px w-8 bg-brand-500"></span>FAQ
+          <span class="h-px w-8 bg-brand-500"></span>
+        </p>
+        <h2
+          class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-balance text-cream"
+        >
+          Questions worth answering before the call.
+        </h2>
+      </div>
 
-    <script is:inline>
-      (function () {
-        const html = document.documentElement;
-        const btn = document.getElementById("themeToggle");
-        const KEY = "vws-theme";
+      <div class="mt-12 space-y-3">
+        {
+          faqs.map((f, i) => (
+            <details
+              class="group rounded-2xl bg-ink-3 ring-1 ring-cream/5 open:ring-brand-500/40 transition-all"
+              open={i === 0}
+            >
+              <summary class="cursor-pointer list-none flex items-center justify-between gap-4 p-6 font-semibold text-lg tracking-tight text-balance text-cream">
+                {f.q}
+                <span class="shrink-0 inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-500/15 text-brand-500 text-lg font-black transition-transform group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <div class="px-6 pb-6 -mt-1 text-cream/65 leading-relaxed text-pretty">
+                {f.a}
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
-        const saved = localStorage.getItem(KEY);
-        const sys = window.matchMedia("(prefers-color-scheme: light)").matches
-          ? "light"
-          : "dark";
-        html.setAttribute("data-theme", saved ?? sys);
+  <!-- CLOSE / BOOKING -->
+  <section class="relative overflow-hidden bg-ink">
+    <div
+      aria-hidden
+      class="absolute -top-32 left-1/2 -translate-x-1/2 h-[600px] w-[900px] rounded-full bg-brand-500/10 blur-3xl"
+    >
+    </div>
+    <div class="relative max-w-4xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+      <div class="text-center max-w-2xl mx-auto">
+        <p
+          class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-500"
+        >
+          <span class="h-px w-8 bg-brand-500"></span>Book your call
+          <span class="h-px w-8 bg-brand-500"></span>
+        </p>
+        <h2
+          class="mt-4 font-display text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] text-balance text-cream"
+        >
+          Want me to
+          <span
+            class="bg-gradient-to-r from-brand-500 via-brand-600 to-brand-400 bg-clip-text text-transparent"
+            >look at your business?</span
+          >
+        </h2>
+        <p class="mt-6 text-lg text-cream/70 leading-relaxed text-pretty">
+          Book a free 45-minute call. We'll look at your current Google
+          presence and lead flow together. No homework. No slide deck. You'll
+          leave with a clear read on what installing the system would actually
+          change for your business, and what it would cost to do it.
+        </p>
+      </div>
 
-        btn.addEventListener("click", () => {
-          const next =
-            html.getAttribute("data-theme") === "dark" ? "light" : "dark";
-          html.setAttribute("data-theme", next);
-          localStorage.setItem(KEY, next);
-        });
+      <a
+        href={calendarUrl}
+        class="group mt-10 mx-auto flex max-w-xl items-center gap-4 rounded-2xl bg-brand-500 hover:bg-brand-600 text-cream p-5 shadow-2xl shadow-brand-500/25 transition-all"
+      >
+        <span
+          class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-cream/15 text-cream"
+          aria-hidden="true"
+        >
+          <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+            <path
+              d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
+            ></path>
+          </svg>
+        </span>
+        <span class="flex-1">
+          <span class="block text-base font-bold leading-tight"
+            >Book my free call</span
+          >
+          <span class="block mt-1 text-sm text-cream/85 leading-snug text-pretty">
+            Free, 45 minutes, zero pressure. If we're not a fit, I'll tell you
+            and point you somewhere useful.
+          </span>
+        </span>
+        <span
+          aria-hidden
+          class="text-xl transition-transform group-hover:translate-x-1"
+          >→</span
+        >
+      </a>
 
-        window
-          .matchMedia("(prefers-color-scheme: light)")
-          .addEventListener("change", (e) => {
-            if (!localStorage.getItem(KEY)) {
-              html.setAttribute("data-theme", e.matches ? "light" : "dark");
-            }
-          });
-      })();
-    </script>
-  </body>
-</html>
+      <aside
+        class="mt-8 mx-auto max-w-xl rounded-2xl bg-ink-2 ring-1 ring-cream/5 p-5"
+      >
+        <div class="flex items-start gap-3">
+          <span
+            aria-hidden
+            class="mt-1 inline-flex h-2 w-2 rounded-full bg-brand-500 shrink-0 animate-pulse"
+          ></span>
+          <div>
+            <p
+              class="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-500"
+            >
+              A note on availability
+            </p>
+            <p class="mt-2 text-sm text-cream/70 leading-relaxed text-pretty">
+              We work with one business per category, per city. The slot in
+              your industry, in your service area, is either open right now or
+              it isn't. The call is the fastest way to find out.
+            </p>
+          </div>
+        </div>
+      </aside>
+
+      <div
+        class="mt-10 rounded-3xl bg-ink-2 ring-1 ring-cream/5 overflow-hidden p-2"
+      >
+        <iframe
+          src="https://api.velocitywebstudio.com/widget/booking/mcWyJi4NDQ1tg3JDZlYS"
+          style="width: 100%;border:none;overflow: hidden;min-height:680px;"
+          id="mcWyJi4NDQ1tg3JDZlYS_1778882671507"
+          title="Book a call with Velocity Web Studio"></iframe>
+        <script
+          is:inline
+          src="https://api.velocitywebstudio.com/js/form_embed.js"
+          type="text/javascript"></script>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-ink-2 text-cream/65 border-t border-cream/5">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-12 flex flex-col gap-8">
+      <div
+        class="flex flex-col sm:flex-row sm:items-center justify-between gap-6"
+      >
+        <a href="/" class="flex items-center gap-2.5" aria-label="Velocity Web Studio home">
+          <span
+            class="inline-flex h-2.5 w-2.5 rounded-full bg-brand-500 shadow-[0_0_12px_var(--color-brand-500)]"
+            aria-hidden="true"></span>
+          <span class="font-display font-extrabold tracking-tight text-cream text-[17px]">
+            Velocity <span class="text-brand-500">Web</span>
+          </span>
+        </a>
+
+        <nav class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+          <a href="/services" class="hover:text-cream transition">Services</a>
+          <span aria-hidden class="text-cream/30">·</span>
+          <a href="#about" class="hover:text-cream transition">About</a>
+          <span aria-hidden class="text-cream/30">·</span>
+          <a href={calendarUrl} class="hover:text-cream transition"
+            >Book a Call</a
+          >
+          <span aria-hidden class="text-cream/30">·</span>
+          <a href="#leadForm" class="hover:text-cream transition"
+            >Get the free review tool</a
+          >
+        </nav>
+      </div>
+
+      <div
+        class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-cream/40 border-t border-cream/5 pt-6"
+      >
+        <p>Built for local service businesses across the Treasure Valley.</p>
+        <p>
+          © {new Date().getFullYear()} Velocity Web Studio · Boise, Idaho
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script is:inline>
+    (function () {
+      const form = document.getElementById("leadForm");
+      if (!form) return;
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const input = form.querySelector('input[name="email"]');
+        const btn = form.querySelector('button[type="submit"]');
+        const label = btn.querySelector(".lead-submit-label");
+        if (!input.value || !input.checkValidity()) {
+          input.focus();
+          return;
+        }
+        btn.classList.remove("bg-brand-500", "hover:bg-brand-600");
+        btn.classList.add("bg-emerald-600");
+        if (label) label.textContent = "Got it. Check your inbox.";
+        input.value = "";
+      });
+    })();
+  </script>
+</BaseLayout>
