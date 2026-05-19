@@ -18,25 +18,67 @@ const stats = [
 ];
 
 const problemPoints = [
-  "It's that you can't answer the phone at 9pm while you're on a job.",
-  "It's that the competitors ranking above you on Google aren't better. They're just running a system you don't have.",
-  "It's that you've been sold 'marketing services' by people who never installed the whole system end to end.",
-  "It's that you're trying to do the work, figure out Google, post weekly, chase reviews, and respond to leads in 60 seconds, all at the same time.",
-  "It's that the agencies you've worked with sold you one piece of the puzzle and called it marketing.",
+  "Your Google Business Profile is a half-finished placeholder.",
+  "Your website is a brochure, not a lead-generating asset.",
+  "Your Facebook page hasn't been touched in eight months.",
+  "Your email list, if you have one, is sitting in a spreadsheet you haven't opened since 2023.",
+  "No two of those pieces are talking to each other, and nobody has ever sat down and built them as one system.",
+];
+
+const pillars = [
+  {
+    n: "Pillar 1",
+    h: "Google Business Profile",
+    p: "The map pack is where local searches end. Your GBP is the only asset that puts you in front of buyers at the exact moment they decide to call someone. We set it up, optimize it, post weekly, manage your reviews, and keep it pulling traffic toward your business 24 hours a day.",
+  },
+  {
+    n: "Pillar 2",
+    h: "Website",
+    p: "Not a brochure. A 15 to 35 page authority asset built around your services, your service areas, and the questions your customers actually search. Schema-tagged, conversion-focused, and fully integrated with your GBP. The site does the work of selling once Google has done the work of finding.",
+  },
+  {
+    n: "Pillar 3",
+    h: "Facebook",
+    p: "Most local businesses treat Facebook like an obligation. We treat it like a trust signal. Your page becomes a steady stream of evidence that you're real, you're active, and you're worth picking over the competition. Optimized profile, weekly posts, response management.",
+  },
+  {
+    n: "Pillar 4",
+    h: "Email",
+    p: "The asset most local businesses never build. Front-end nurture catches the leads who aren't ready to buy yet and walks them in over time. Back-end retention keeps your existing customers coming back, referring you, and remembering you exist when the next job comes up.",
+  },
+];
+
+const tiers = [
+  {
+    name: "Launch",
+    tag: "The foundation tier",
+    best: "Businesses ready to plant the flag.",
+    body: "We install the base of all four pillars, get your Google profile dominant in your immediate service area, and build out your website month by month. Steady progress. Lowest monthly commitment. Slowest path to the full destination, but every dollar is moving you forward.",
+    highlighted: false,
+    badge: null,
+  },
+  {
+    name: "Accelerate",
+    tag: "The growth tier",
+    best: "Businesses ready to move faster.",
+    body: "Same destination, but we build twice as much each month, automate most of the manual work, and add front-end email so you stop losing leads who weren't ready to buy on day one. This is where most Velocity clients start.",
+    highlighted: true,
+    badge: "Most clients start here",
+  },
+  {
+    name: "Velocity",
+    tag: "The dominance tier",
+    best: "Businesses already producing revenue and ready to push past their local competition.",
+    body: "We set up every pillar in the first 30 days, run daily activity on your GBP, fire both front-end and back-end email, and use GeoGrid data to attack the exact zip codes where your competitors are winning. This is the autopilot tier for owners who want to stop thinking about marketing and just see the leads come in.",
+    highlighted: false,
+    badge: null,
+  },
 ];
 
 const differentiators = [
   {
-    h: "End to end, not piecemeal.",
-    p: "Most agencies sell one piece. SEO, or ads, or a website. We install all five: visibility, capture, follow-up, paid traffic, organic SEO. Pieces don't compound. Systems do.",
-  },
-  {
     h: "Done for you, not done with you.",
     p: "You don't learn the tools. You don't manage the CRM. You don't post weekly. We run it. You do the work you're already good at.",
-  },
-  {
-    h: "Built to produce fast.",
-    p: "The system is engineered to start putting qualified leads in front of you inside the first 60 days. Most of our clients see it pay for itself before the second month closes. We've run this enough times across niches and service areas to know what the curve looks like.",
   },
   {
     h: "Your category, closed to your competitors.",
@@ -47,8 +89,8 @@ const differentiators = [
     p: "You stay because it's working, not because you're locked in. If we're not earning the spend, you shouldn't be paying it.",
   },
   {
-    h: "Compounds over time.",
-    p: "Campaigns end. Systems compound. The infrastructure we install keeps producing leads after the ad budget pauses. That's the difference between renting leads and owning them.",
+    h: "Run by the person who built it.",
+    p: "You're working with me directly. No account managers, no handoffs, no junior trying to find your business on a map. If you sign with Velocity, you get my phone number and my actual attention.",
   },
 ];
 
@@ -56,30 +98,30 @@ const process = [
   {
     when: "Week 1",
     h: "Audit and strategy",
-    p: "We map your current Google presence, find the leaks in your lead flow, and benchmark you against the businesses ranking above you. You get a clear install plan with no fluff.",
+    p: "We map your current setup across all four pillars, find the leaks, benchmark you against your top local competitors, and lock in the install plan for your tier. You get a clear picture of where you are and where we're going.",
   },
   {
-    when: "Weeks 2 to 3",
-    h: "Build and install",
-    p: "We set up the full stack. Google Business Profile optimization, review system, missed-call text-back, follow-up sequences, ad accounts, tracking. Everything wired and live.",
+    when: "Weeks 2 to 4",
+    h: "Install",
+    p: "We build the base of every pillar. GBP optimized and producing. Foundation website live with your core service pages. Facebook profile rebuilt and posting. Email tooling set up and ready to capture. By the end of this window, the foundation is in.",
   },
   {
-    when: "Week 4",
-    h: "Launch",
-    p: "The system goes on. Leads start coming through.",
+    when: "Month 2 onward",
+    h: "Run and expand",
+    p: "The system starts producing. We continue building out website pages, running GBP posts, expanding your email program, and refining everything based on what the data tells us. The longer it runs, the more it compounds.",
   },
   {
-    when: "Week 5 and beyond",
-    h: "Run, refine, scale",
-    p: "We work the system every week. You get weekly performance reports. We optimize what's working and kill what isn't. The longer it runs, the better it gets.",
+    when: "Long-term",
+    h: "Authority Signals",
+    p: "Once the website is fully built out, you graduate to maintenance mode. Same monthly rate. The system keeps producing, we keep it sharp, your rankings hold.",
   },
 ];
 
 const aboutParas = [
   "I'm Richard Prins. I run Velocity Web Studio out of Boise.",
-  "I started this company after years of watching capable local service businesses pay good money to agencies that sold them one piece of a system and called it marketing. SEO retainer over here. A few hundred bucks a month in ads over there. A website that looked nice but didn't generate anything. Meanwhile the actual machine that drives compounding local leads, the one that connects all of it, sat un-installed in their business.",
+  "I started this company after years of watching capable local service businesses pay good money to agencies that sold them one piece of a system and called it marketing. SEO retainer over here. A few hundred bucks a month in ads over there. A website that looked nice but didn't generate anything. Meanwhile the four pillars that actually drive compounding local growth sat un-installed in their business.",
   "It made me a little crazy, honestly. These were good operators. Real businesses. Solid work. They just kept hiring vendors who were happy to sell features and ghost on outcomes.",
-  "So I built the agency I wished those owners had been able to hire. End to end. Run by the person who built it. No account managers, no handoffs, no junior trying to find your business on a map. If you sign with Velocity, you're working with me directly. That's the deal.",
+  "So I built the agency I wished those owners had been able to hire. End to end. Run by the person who built it. No account managers, no handoffs.",
 ];
 
 const aboutBeats = [
@@ -112,15 +154,15 @@ const testimonials = [
 const faqs = [
   {
     q: "How long until I see leads?",
-    a: "Most clients see qualified leads inside the first 60 days. Some see them in week three. The variable isn't the system, it's where your business is starting from (existing Google presence, review count, market competitiveness).",
+    a: "Most clients see qualified leads inside the first 60 days. Some see them in week three. The variable isn't the system, it's where your business is starting from (existing Google presence, review count, market competitiveness) and which tier you're on.",
   },
   {
     q: "What if I'm already running ads?",
-    a: "Good. We'll audit what's running, fix what's broken, and plug it into the rest of the system. You don't lose what you've already built.",
+    a: "Good. We'll audit what's running and either fold it into the system or recommend you pause it. Paid traffic is an add-on we offer when it makes sense for your business, not the core of what we do.",
   },
   {
     q: "Do you handle my Google Business Profile, or do I?",
-    a: "We handle it. You don't touch a thing unless you want to. Most owners hand us the keys on day one and never look back.",
+    a: "We handle it. You don't touch a thing unless you want to.",
   },
   {
     q: "Do I have to sign a contract?",
@@ -128,11 +170,11 @@ const faqs = [
   },
   {
     q: "What does it cost?",
-    a: "Depends on what your business needs. We don't believe in flat-rate packages that pretend every business is the same. The 45-minute call gives you a real number based on what's actually right for you, not a guess.",
+    a: "Pricing depends on which tier fits your business and where you're starting from. The 45-minute call gives you a real number based on what's actually right for you, not a guess.",
   },
   {
-    q: "What if it doesn't work?",
-    a: "Then it doesn't work and we both move on. Month-to-month means you're never trapped paying for something that isn't producing.",
+    q: "Why don't you list prices on the page?",
+    a: "Because flat pricing pretends every business is the same. Two HVAC companies in the same city can need very different setups based on their existing assets and goals. I'd rather give you a real recommendation than a one-size guess.",
   },
 ];
 ---
@@ -153,16 +195,19 @@ const faqs = [
         <span
           class="inline-flex h-2.5 w-2.5 rounded-full bg-brand-500 shadow-[0_0_12px_var(--color-brand-500)]"
           aria-hidden="true"></span>
-        <span class="font-display font-extrabold tracking-tight text-cream text-[17px]">
+        <span
+          class="font-display font-extrabold tracking-tight text-cream text-[17px]"
+        >
           Velocity <span class="text-brand-500">Web</span>
         </span>
       </a>
       <nav class="hidden md:flex items-center gap-7 text-sm font-medium">
-        <a href="#problem" class="text-cream/70 hover:text-cream transition"
-          >Problem</a
+        <a
+          href="#destination"
+          class="text-cream/70 hover:text-cream transition">Pillars</a
         >
-        <a href="#solution" class="text-cream/70 hover:text-cream transition"
-          >Solution</a
+        <a href="#ladder" class="text-cream/70 hover:text-cream transition"
+          >Tiers</a
         >
         <a href="#about" class="text-cream/70 hover:text-cream transition"
           >About</a
@@ -170,7 +215,7 @@ const faqs = [
         <a href="#faq" class="text-cream/70 hover:text-cream transition">FAQ</a>
       </nav>
       <a
-        href={calendarUrl}
+        href="#book"
         class="inline-flex items-center gap-1.5 rounded-full bg-brand-500 text-cream px-4 py-2 text-sm font-bold hover:bg-brand-600 transition shadow-lg shadow-brand-500/20"
       >
         Book a Call
@@ -199,63 +244,55 @@ const faqs = [
       >
         <span class="h-1.5 w-1.5 rounded-full bg-brand-500 animate-pulse"
         ></span>
-        Free tool for local service businesses
+        Four pillars · One system · Boise & the Treasure Valley
       </div>
 
       <h1
         class="mt-7 font-display text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[0.98] text-balance text-cream"
       >
-        Get more 5-star Google reviews.
+        Local dominance isn't a mystery.
         <span class="block mt-2 text-cream/40">
+          It's a
           <span
             class="bg-gradient-to-r from-brand-500 via-brand-600 to-brand-400 bg-clip-text text-transparent"
-            >Catch the bad ones</span
+            >destination.</span
           >
-          before they go public.
         </span>
       </h1>
 
       <p
-        class="mt-7 text-lg md:text-xl text-cream/60 max-w-2xl mx-auto leading-relaxed text-pretty"
+        class="mt-7 text-lg md:text-xl text-cream/65 max-w-2xl mx-auto leading-relaxed text-pretty"
       >
-        We built a free done-for-you review tool and we'll set it up for your
-        business inside 48 hours. It sends your happy customers straight to
-        your Google review page. It routes the unhappy ones to a private form
-        so you can fix the issue before it ever lands on your profile. Yours
-        to keep, no strings.
+        Every business that wins locally gets there through the same four
+        pillars. We install all four, run them as one system, and the only
+        variable is the speed you want to move.
       </p>
 
-      <form
-        class="mt-10 mx-auto max-w-xl flex flex-col sm:flex-row gap-2 p-2 rounded-2xl bg-ink-2 ring-1 ring-cream/10 shadow-2xl shadow-black/40"
-        id="leadForm"
-        novalidate
-      >
-        <label class="sr-only" for="leadEmail">Your business email</label>
-        <input
-          class="flex-1 bg-transparent px-4 py-3 text-base text-cream placeholder:text-cream/40 outline-none rounded-xl focus:bg-ink-3 transition"
-          type="email"
-          id="leadEmail"
-          name="email"
-          placeholder="Your business email"
-          required
-          autocomplete="email"
-        />
-        <button
-          class="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-500 text-cream px-6 py-3 text-sm font-bold hover:bg-brand-600 transition whitespace-nowrap shadow-lg shadow-brand-500/25"
-          type="submit"
+      <div class="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+        <a
+          href="#book"
+          class="group inline-flex items-center justify-center gap-2 rounded-full bg-brand-500 text-cream px-7 py-4 text-base font-bold shadow-xl shadow-brand-500/25 hover:bg-brand-600 transition-all"
         >
-          <span class="lead-submit-label">Get my free review tool</span>
-          <span aria-hidden>→</span>
-        </button>
-      </form>
+          Book a strategy call
+          <span
+            aria-hidden
+            class="transition-transform group-hover:translate-x-1">→</span
+          >
+        </a>
+        <a
+          href="#destination"
+          class="inline-flex items-center justify-center gap-2 rounded-full border border-cream/15 text-cream px-7 py-4 text-base font-semibold hover:bg-ink-2 transition"
+        >
+          See the four pillars
+        </a>
+      </div>
 
-      <p class="mt-4 text-sm text-cream/55">
-        Live in 48 hours. Yours forever, even if we never work together again.
+      <p class="mt-4 text-sm text-cream/55 max-w-lg mx-auto">
+        Free, 45 minutes, zero pressure. If we're not a fit, I'll tell you
+        and point you somewhere useful.
       </p>
 
-      <p
-        class="mt-10 text-sm text-cream/45 tracking-wide"
-      >
+      <p class="mt-10 text-sm text-cream/45 tracking-wide">
         Built for local service businesses across Boise and the Treasure
         Valley.
       </p>
@@ -311,14 +348,14 @@ const faqs = [
         <p
           class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-500"
         >
-          <span class="h-px w-8 bg-brand-500"></span>The real problem
+          <span class="h-px w-8 bg-brand-500"></span>The problem
         </p>
         <h2
           class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] text-balance text-cream"
         >
           You're not behind because you're bad at marketing.
           <span class="text-brand-500"
-            >You're behind because nobody installed the system.</span
+            >You're behind because the system isn't built.</span
           >
         </h2>
       </div>
@@ -340,17 +377,11 @@ const faqs = [
                 >
                   →
                 </span>
-                <span>{p}</span>
+                <span>It's that {p.charAt(0).toLowerCase() + p.slice(1)}</span>
               </li>
             ))
           }
         </ul>
-
-        <p class="text-cream/60">
-          Nobody can do all of that themselves. The owners winning in your
-          market aren't doing it themselves either. They installed the system
-          that does it for them.
-        </p>
 
         <p
           class="relative rounded-2xl bg-ink-2 ring-1 ring-cream/5 p-6 text-xl font-semibold leading-snug text-pretty text-cream"
@@ -360,21 +391,216 @@ const faqs = [
             class="absolute left-0 top-4 bottom-4 w-1 rounded-r-full bg-brand-500"
           ></span>
           <span class="block pl-3">
-            That's the gap. Not your skill. Not your effort. The system.
+            The competitors ranking above you aren't better operators. They
+            have the four pillars built and running. You don't. That's the
+            entire difference.
           </span>
         </p>
       </div>
     </div>
   </section>
 
-  <!-- DIFFERENTIATORS -->
-  <section id="solution" class="relative bg-ink-2 border-y border-cream/5">
+  <!-- DESTINATION (FOUR PILLARS) -->
+  <section
+    id="destination"
+    class="relative bg-ink-2 border-y border-cream/5 overflow-hidden"
+  >
+    <div
+      aria-hidden
+      class="absolute top-1/2 -translate-y-1/2 -right-40 h-[420px] w-[420px] rounded-full bg-brand-500/8 blur-3xl"
+    >
+    </div>
+
+    <div class="relative max-w-6xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+      <div class="max-w-3xl mx-auto text-center">
+        <p
+          class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-500"
+        >
+          <span class="h-px w-8 bg-brand-500"></span>The destination
+          <span class="h-px w-8 bg-brand-500"></span>
+        </p>
+        <h2
+          class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-balance text-cream"
+        >
+          Four pillars, running as
+          <span class="text-brand-500">one system.</span>
+        </h2>
+        <p class="mt-5 text-lg text-cream/65 leading-relaxed text-pretty">
+          Every local service business that wins in their market arrives at
+          the same place. These are the four assets that get them there.
+        </p>
+      </div>
+
+      <div class="mt-14 grid md:grid-cols-2 gap-5">
+        {
+          pillars.map((p) => (
+            <div class="group relative rounded-2xl bg-ink-3 p-7 lg:p-8 ring-1 ring-cream/5 hover:ring-brand-500/40 transition-all">
+              <div class="flex items-center justify-between">
+                <p class="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-500">
+                  {p.n}
+                </p>
+                <span
+                  aria-hidden
+                  class="h-1.5 w-1.5 rounded-full bg-brand-500/50 group-hover:bg-brand-500 transition"
+                />
+              </div>
+              <h3 class="mt-3 font-display text-2xl lg:text-3xl font-bold tracking-tight text-cream leading-tight">
+                {p.h}
+              </h3>
+              <p class="mt-4 text-[15px] text-cream/70 leading-relaxed text-pretty">
+                {p.p}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+
+      <p
+        class="mt-10 text-center text-lg text-cream/80 max-w-2xl mx-auto text-pretty leading-relaxed"
+      >
+        No piece does the work alone. Built together as one system, they
+        compound. <span class="text-cream font-semibold"
+          >That's the destination.</span
+        >
+      </p>
+    </div>
+  </section>
+
+  <!-- LADDER (TIERS) -->
+  <section id="ladder" class="relative bg-ink">
     <div class="max-w-6xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
       <div class="max-w-3xl mx-auto text-center">
         <p
           class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-500"
         >
-          <span class="h-px w-8 bg-brand-500"></span>The solution
+          <span class="h-px w-8 bg-brand-500"></span>The ladder
+        </p>
+        <h2
+          class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-balance text-cream"
+        >
+          Every Velocity client ends up at the same place.
+          <span class="text-cream/40">The tier just determines how fast.</span>
+        </h2>
+        <p class="mt-5 text-lg text-cream/65 leading-relaxed text-pretty">
+          Where you are now determines where we start. Where you want to be
+          determines how fast we move.
+        </p>
+      </div>
+
+      <div
+        class="mt-14 grid lg:grid-cols-3 gap-5 items-stretch"
+      >
+        {
+          tiers.map((t) => (
+            <div
+              class:list={[
+                "relative flex flex-col rounded-2xl p-7 ring-1 transition-all",
+                t.highlighted
+                  ? "bg-ink-3 ring-brand-500/50 lg:scale-[1.03] shadow-2xl shadow-brand-500/10"
+                  : "bg-ink-2 ring-cream/5 hover:ring-cream/15",
+              ]}
+            >
+              {t.badge && (
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 rounded-full bg-brand-500 text-cream px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] whitespace-nowrap shadow-lg shadow-brand-500/30">
+                  {t.badge}
+                </div>
+              )}
+
+              <div>
+                <h3 class="font-display text-3xl font-extrabold tracking-tight text-cream">
+                  {t.name}
+                </h3>
+                <p class="mt-1 text-[10px] font-bold uppercase tracking-[0.22em] text-brand-500">
+                  {t.tag}
+                </p>
+              </div>
+
+              <div class="mt-6 pb-5 border-b border-cream/5">
+                <p class="text-xs font-bold uppercase tracking-wider text-cream/40">
+                  Best for
+                </p>
+                <p class="mt-1.5 text-[15px] text-cream/90 font-medium leading-snug text-pretty">
+                  {t.best}
+                </p>
+              </div>
+
+              <p class="mt-5 text-[15px] text-cream/70 leading-relaxed text-pretty flex-1">
+                {t.body}
+              </p>
+
+              <a
+                href="#book"
+                class:list={[
+                  "mt-7 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition-all",
+                  t.highlighted
+                    ? "bg-brand-500 text-cream hover:bg-brand-600 shadow-lg shadow-brand-500/20"
+                    : "bg-cream/5 text-cream ring-1 ring-cream/10 hover:bg-cream/10",
+                ]}
+              >
+                Talk about {t.name} <span aria-hidden>→</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <p
+        class="mt-10 text-center text-base text-cream/55 max-w-2xl mx-auto text-pretty leading-relaxed"
+      >
+        Pricing depends on your business, your starting point, and the speed
+        you want to move. The strategy call is where we figure out which tier
+        fits and what it costs for your situation.
+      </p>
+    </div>
+  </section>
+
+  <!-- AUTHORITY SIGNALS -->
+  <section class="relative bg-ink-2 border-y border-cream/5">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
+      <div class="text-center">
+        <p
+          class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-500"
+        >
+          <span class="h-px w-8 bg-brand-500"></span>Authority Signals
+          <span class="h-px w-8 bg-brand-500"></span>
+        </p>
+        <h2
+          class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-balance text-cream"
+        >
+          What happens after the system is built.
+        </h2>
+      </div>
+
+      <div class="mt-12 rounded-3xl bg-ink-3 ring-1 ring-cream/5 p-8 lg:p-10 space-y-5 text-lg text-cream/75 leading-relaxed text-pretty">
+        <p>
+          Once your website is fully built out and your pillars are producing,
+          you graduate to the <span class="text-cream font-semibold"
+            >Authority Signals plan</span
+          >. Your monthly rate stays where it is. The work shifts from
+          building to maintaining: weekly GBP posts, ongoing Facebook
+          activity, fresh backlinks, content updates, and continued reporting.
+        </p>
+        <p>
+          This is the long-term relationship. Most clients stay on Authority
+          Signals indefinitely, because the moment maintenance stops, the
+          rankings drift. The compounding only continues if the system stays
+          running. <span class="text-cream font-semibold"
+            >That's how local dominance works. You don't get it once and keep
+            it. You build it, then you protect it.</span
+          >
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY THIS WORKS (DIFFERENTIATORS) -->
+  <section id="solution" class="relative bg-ink">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+      <div class="max-w-3xl mx-auto text-center">
+        <p
+          class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-500"
+        >
+          <span class="h-px w-8 bg-brand-500"></span>Why this works
         </p>
         <h2
           class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-balance text-cream"
@@ -383,10 +609,10 @@ const faqs = [
         </h2>
       </div>
 
-      <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="mt-14 grid md:grid-cols-2 gap-5">
         {
           differentiators.map((d, i) => (
-            <div class="group relative rounded-2xl bg-ink-3 p-7 ring-1 ring-cream/5 hover:ring-brand-500/40 hover:shadow-xl hover:shadow-brand-500/5 transition-all">
+            <div class="group relative rounded-2xl bg-ink-2 p-7 ring-1 ring-cream/5 hover:ring-brand-500/40 hover:shadow-xl hover:shadow-brand-500/5 transition-all">
               <span class="text-[10px] font-bold uppercase tracking-widest text-cream/30">
                 0{i + 1}
               </span>
@@ -403,45 +629,6 @@ const faqs = [
     </div>
   </section>
 
-  <!-- PROCESS -->
-  <section class="relative bg-ink">
-    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
-      <div class="max-w-3xl mx-auto text-center">
-        <p
-          class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-500"
-        >
-          <span class="h-px w-8 bg-brand-500"></span>How it works
-        </p>
-        <h2
-          class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-balance text-cream"
-        >
-          What happens after you sign.
-        </h2>
-      </div>
-
-      <ol class="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-        {
-          process.map((step, i) => (
-            <li class="relative rounded-2xl bg-ink-2 p-6 ring-1 ring-cream/5 h-full flex flex-col">
-              <p class="text-5xl font-extrabold tracking-tight bg-gradient-to-br from-brand-500 to-brand-400 bg-clip-text text-transparent leading-none">
-                0{i + 1}
-              </p>
-              <p class="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-cream/45">
-                {step.when}
-              </p>
-              <h3 class="mt-1 text-lg font-bold tracking-tight text-cream">
-                {step.h}
-              </h3>
-              <p class="mt-3 text-sm text-cream/65 leading-relaxed text-pretty flex-1">
-                {step.p}
-              </p>
-            </li>
-          ))
-        }
-      </ol>
-    </div>
-  </section>
-
   <!-- ABOUT -->
   <section id="about" class="relative bg-ink-2 border-y border-cream/5">
     <div class="max-w-6xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
@@ -450,7 +637,7 @@ const faqs = [
           <p
             class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-500"
           >
-            <span class="h-px w-8 bg-brand-500"></span>About
+            <span class="h-px w-8 bg-brand-500"></span>About me
           </p>
           <h2
             class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-balance text-cream"
@@ -542,7 +729,7 @@ const faqs = [
         <h2
           class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-balance text-cream"
         >
-          How you know this is real.
+          What it looks like when the pillars start working together.
         </h2>
       </div>
 
@@ -584,8 +771,47 @@ const faqs = [
     </div>
   </section>
 
+  <!-- HOW IT WORKS (PROCESS) -->
+  <section class="relative bg-ink-2 border-y border-cream/5">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+      <div class="max-w-3xl mx-auto text-center">
+        <p
+          class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-500"
+        >
+          <span class="h-px w-8 bg-brand-500"></span>How it works
+        </p>
+        <h2
+          class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-balance text-cream"
+        >
+          What happens after you sign.
+        </h2>
+      </div>
+
+      <ol class="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {
+          process.map((step, i) => (
+            <li class="relative rounded-2xl bg-ink-3 p-6 ring-1 ring-cream/5 h-full flex flex-col">
+              <p class="text-5xl font-extrabold tracking-tight bg-gradient-to-br from-brand-500 to-brand-400 bg-clip-text text-transparent leading-none">
+                0{i + 1}
+              </p>
+              <p class="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-cream/45">
+                {step.when}
+              </p>
+              <h3 class="mt-1 text-lg font-bold tracking-tight text-cream">
+                {step.h}
+              </h3>
+              <p class="mt-3 text-sm text-cream/65 leading-relaxed text-pretty flex-1">
+                {step.p}
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
   <!-- FAQ -->
-  <section id="faq" class="relative bg-ink-2 border-y border-cream/5">
+  <section id="faq" class="relative bg-ink">
     <div class="max-w-4xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
       <div class="text-center max-w-2xl mx-auto">
         <p
@@ -605,7 +831,7 @@ const faqs = [
         {
           faqs.map((f, i) => (
             <details
-              class="group rounded-2xl bg-ink-3 ring-1 ring-cream/5 open:ring-brand-500/40 transition-all"
+              class="group rounded-2xl bg-ink-2 ring-1 ring-cream/5 open:ring-brand-500/40 transition-all"
               open={i === 0}
             >
               <summary class="cursor-pointer list-none flex items-center justify-between gap-4 p-6 font-semibold text-lg tracking-tight text-balance text-cream">
@@ -624,8 +850,73 @@ const faqs = [
     </div>
   </section>
 
-  <!-- CLOSE / BOOKING -->
-  <section class="relative overflow-hidden bg-ink">
+  <!-- SOFT CTA (LEAD MAGNET) -->
+  <section id="lead-magnet" class="relative bg-ink-2 border-y border-cream/5">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20 lg:py-24">
+      <div class="rounded-3xl bg-ink-3 ring-1 ring-cream/5 p-8 lg:p-12">
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7">
+            <p
+              class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-500"
+            >
+              <span class="h-px w-8 bg-brand-500"></span>Not ready to book?
+            </p>
+            <h2
+              class="mt-4 font-display text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight text-balance text-cream"
+            >
+              Grab the free Google Review tool.
+            </h2>
+            <p
+              class="mt-4 text-base text-cream/70 leading-relaxed text-pretty"
+            >
+              It's one piece of the system (Pillar 1, the GBP side), but it's
+              the easiest piece to install. We'll set it up for you in 48
+              hours. It sends your happy customers straight to Google to leave
+              a 5-star review, and routes the unhappy ones to a private form
+              so you can fix the issue before it ever lands on your public
+              profile.
+            </p>
+            <p class="mt-3 text-sm text-cream/55 italic">
+              Yours forever, even if we never work together again.
+            </p>
+          </div>
+
+          <div class="lg:col-span-5">
+            <form
+              class="flex flex-col gap-3"
+              id="leadForm"
+              novalidate
+              data-lead-form
+            >
+              <label class="sr-only" for="leadEmail">Your business email</label>
+              <input
+                class="w-full bg-ink-2 px-4 py-3.5 text-base text-cream placeholder:text-cream/40 outline-none rounded-xl ring-1 ring-cream/10 focus:ring-brand-500 focus:bg-ink transition"
+                type="email"
+                id="leadEmail"
+                name="email"
+                placeholder="Your business email"
+                required
+                autocomplete="email"
+              />
+              <button
+                class="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-500 text-cream px-6 py-3.5 text-sm font-bold hover:bg-brand-600 transition whitespace-nowrap shadow-lg shadow-brand-500/25"
+                type="submit"
+              >
+                <span class="lead-submit-label">Get my free review tool</span>
+                <span aria-hidden>→</span>
+              </button>
+              <p class="text-xs text-cream/50 text-center">
+                Live in 48 hours. No strings. No upsell.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA / BOOKING -->
+  <section id="book" class="relative overflow-hidden bg-ink">
     <div
       aria-hidden
       class="absolute -top-32 left-1/2 -translate-x-1/2 h-[600px] w-[900px] rounded-full bg-brand-500/10 blur-3xl"
@@ -649,10 +940,10 @@ const faqs = [
           >
         </h2>
         <p class="mt-6 text-lg text-cream/70 leading-relaxed text-pretty">
-          Book a free 45-minute call. We'll look at your current Google
-          presence and lead flow together. No homework. No slide deck. You'll
-          leave with a clear read on what installing the system would actually
-          change for your business, and what it would cost to do it.
+          Book a free 45-minute strategy call. We'll look at your current
+          setup across all four pillars, find what's leaking, and I'll tell
+          you what tier fits your business and what it would cost to start
+          moving.
         </p>
       </div>
 
@@ -672,7 +963,7 @@ const faqs = [
         </span>
         <span class="flex-1">
           <span class="block text-base font-bold leading-tight"
-            >Book my free call</span
+            >Book my strategy call</span
           >
           <span class="block mt-1 text-sm text-cream/85 leading-snug text-pretty">
             Free, 45 minutes, zero pressure. If we're not a fit, I'll tell you
@@ -731,26 +1022,28 @@ const faqs = [
       <div
         class="flex flex-col sm:flex-row sm:items-center justify-between gap-6"
       >
-        <a href="/" class="flex items-center gap-2.5" aria-label="Velocity Web Studio home">
+        <a
+          href="/"
+          class="flex items-center gap-2.5"
+          aria-label="Velocity Web Studio home"
+        >
           <span
             class="inline-flex h-2.5 w-2.5 rounded-full bg-brand-500 shadow-[0_0_12px_var(--color-brand-500)]"
             aria-hidden="true"></span>
-          <span class="font-display font-extrabold tracking-tight text-cream text-[17px]">
+          <span
+            class="font-display font-extrabold tracking-tight text-cream text-[17px]"
+          >
             Velocity <span class="text-brand-500">Web</span>
           </span>
         </a>
 
         <nav class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
-          <a href="/services" class="hover:text-cream transition">Services</a>
-          <span aria-hidden class="text-cream/30">·</span>
           <a href="#about" class="hover:text-cream transition">About</a>
           <span aria-hidden class="text-cream/30">·</span>
-          <a href={calendarUrl} class="hover:text-cream transition"
-            >Book a Call</a
-          >
+          <a href="#book" class="hover:text-cream transition">Book a Call</a>
           <span aria-hidden class="text-cream/30">·</span>
-          <a href="#leadForm" class="hover:text-cream transition"
-            >Get the free review tool</a
+          <a href="#lead-magnet" class="hover:text-cream transition"
+            >Free Review Tool</a
           >
         </nav>
       </div>
@@ -766,24 +1059,180 @@ const faqs = [
     </div>
   </footer>
 
+  <!-- EXIT INTENT POPUP -->
+  <dialog
+    id="exitDialog"
+    class="m-auto max-w-md w-[calc(100%-2rem)] bg-ink-3 text-cream rounded-3xl ring-1 ring-cream/10 shadow-2xl shadow-black/60 p-0 backdrop:bg-black/70 backdrop:backdrop-blur-sm"
+  >
+    <div class="relative p-7 lg:p-8">
+      <button
+        type="button"
+        id="exitDialogClose"
+        aria-label="Close"
+        class="absolute top-3 right-3 inline-flex h-9 w-9 items-center justify-center rounded-full text-cream/60 hover:text-cream hover:bg-cream/5 transition"
+      >
+        <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
+          <path
+            d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+          ></path>
+        </svg>
+      </button>
+
+      <p
+        class="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-500"
+      >
+        Before you go
+      </p>
+      <h3
+        class="mt-3 font-display text-2xl md:text-3xl font-extrabold tracking-tight leading-tight text-balance"
+      >
+        Grab the free Google Review tool on your way out.
+      </h3>
+      <p class="mt-4 text-sm text-cream/70 leading-relaxed text-pretty">
+        If you're not ready for a strategy call yet, grab the free Google
+        Review tool we built. We'll install it for your business in 48 hours,
+        and it's yours to keep forever. No call required, no strings.
+      </p>
+
+      <form
+        class="mt-6 flex flex-col gap-3"
+        id="exitLeadForm"
+        novalidate
+        data-lead-form
+      >
+        <label class="sr-only" for="exitLeadEmail"
+          >Your business email</label
+        >
+        <input
+          class="w-full bg-ink-2 px-4 py-3.5 text-base text-cream placeholder:text-cream/40 outline-none rounded-xl ring-1 ring-cream/10 focus:ring-brand-500 focus:bg-ink transition"
+          type="email"
+          id="exitLeadEmail"
+          name="email"
+          placeholder="Your business email"
+          required
+          autocomplete="email"
+        />
+        <button
+          class="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-500 text-cream px-6 py-3.5 text-sm font-bold hover:bg-brand-600 transition shadow-lg shadow-brand-500/25"
+          type="submit"
+        >
+          <span class="lead-submit-label">Send me the free tool</span>
+          <span aria-hidden>→</span>
+        </button>
+      </form>
+
+      <button
+        type="button"
+        id="exitDialogDismiss"
+        class="mt-4 w-full text-center text-sm text-cream/50 hover:text-cream/80 transition"
+      >
+        No thanks, just looking
+      </button>
+    </div>
+  </dialog>
+
+  <!-- LEAD FORM + EXIT INTENT JS -->
   <script is:inline>
     (function () {
-      const form = document.getElementById("leadForm");
-      if (!form) return;
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const input = form.querySelector('input[name="email"]');
-        const btn = form.querySelector('button[type="submit"]');
-        const label = btn.querySelector(".lead-submit-label");
-        if (!input.value || !input.checkValidity()) {
-          input.focus();
-          return;
-        }
-        btn.classList.remove("bg-brand-500", "hover:bg-brand-600");
-        btn.classList.add("bg-emerald-600");
-        if (label) label.textContent = "Got it. Check your inbox.";
-        input.value = "";
+      const SUBMITTED_KEY = "vws-lead-submitted";
+      const EXIT_SHOWN_KEY = "vws-exit-shown";
+
+      // Wire any form marked [data-lead-form].
+      // TODO: replace stub with GHL webhook POST.
+      document.querySelectorAll("[data-lead-form]").forEach((form) => {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const input = form.querySelector('input[name="email"]');
+          const btn = form.querySelector('button[type="submit"]');
+          const label = btn.querySelector(".lead-submit-label");
+          if (!input.value || !input.checkValidity()) {
+            input.focus();
+            return;
+          }
+          btn.classList.remove("bg-brand-500", "hover:bg-brand-600");
+          btn.classList.add("bg-emerald-600", "shadow-emerald-600/25");
+          if (label) label.textContent = "Got it. Check your inbox.";
+          input.value = "";
+          sessionStorage.setItem(SUBMITTED_KEY, "1");
+        });
       });
+
+      // Exit intent popup
+      const dialog = document.getElementById("exitDialog");
+      if (!dialog || typeof dialog.showModal !== "function") return;
+
+      const closeBtn = document.getElementById("exitDialogClose");
+      const dismissBtn = document.getElementById("exitDialogDismiss");
+
+      function markShown() {
+        sessionStorage.setItem(EXIT_SHOWN_KEY, "1");
+      }
+      function alreadyHandled() {
+        return (
+          sessionStorage.getItem(EXIT_SHOWN_KEY) === "1" ||
+          sessionStorage.getItem(SUBMITTED_KEY) === "1"
+        );
+      }
+      function openDialog() {
+        if (alreadyHandled() || dialog.open) return;
+        markShown();
+        dialog.showModal();
+      }
+      function closeDialog() {
+        if (dialog.open) dialog.close();
+      }
+
+      closeBtn?.addEventListener("click", closeDialog);
+      dismissBtn?.addEventListener("click", closeDialog);
+
+      // Click backdrop to close
+      dialog.addEventListener("click", (e) => {
+        if (e.target === dialog) closeDialog();
+      });
+
+      // Once popup is submitted, close it
+      document
+        .getElementById("exitLeadForm")
+        ?.addEventListener("submit", () => {
+          setTimeout(closeDialog, 1200);
+        });
+
+      // Trigger logic: mouseleave from top (desktop only).
+      // 5-second grace period after load to avoid false fires.
+      let armed = false;
+      setTimeout(() => {
+        armed = true;
+      }, 5000);
+
+      document.addEventListener("mouseleave", (e) => {
+        if (!armed) return;
+        if (e.clientY <= 0) openDialog();
+      });
+
+      // Mobile / touch fallback: open on hard scroll-up after meaningful scroll depth.
+      let lastY = window.scrollY;
+      let maxY = 0;
+      const isTouch = window.matchMedia("(pointer: coarse)").matches;
+      if (isTouch) {
+        window.addEventListener(
+          "scroll",
+          () => {
+            const y = window.scrollY;
+            if (y > maxY) maxY = y;
+            // Triggered if user scrolled past 60% of viewport and then quickly scrolls back up to the top.
+            if (
+              armed &&
+              maxY > window.innerHeight * 0.6 &&
+              y < 80 &&
+              lastY > 200
+            ) {
+              openDialog();
+            }
+            lastY = y;
+          },
+          { passive: true }
+        );
+      }
     })();
   </script>
 </BaseLayout>
