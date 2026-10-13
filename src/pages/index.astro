@@ -4,8 +4,7 @@ import headshot from "../assets/headshot.png";
 
 export const prerender = true;
 
-const calendarUrl =
-  "https://api.velocitywebstudio.com/widget/booking/mcWyJi4NDQ1tg3JDZlYS";
+const calendarUrl = "https://meetings-na2.hubspot.com/velocity-web-studio";
 
 const stats = [
   { n: "46%", l: "of all Google searches are local" },
@@ -953,15 +952,17 @@ const faqs = [
       <div
         class="mt-10 rounded-3xl bg-ink-2 ring-1 ring-cream/5 overflow-hidden p-2"
       >
-        <iframe
-          src="https://api.velocitywebstudio.com/widget/booking/mcWyJi4NDQ1tg3JDZlYS"
-          style="width: 100%;border:none;overflow: hidden;min-height:680px;"
-          id="mcWyJi4NDQ1tg3JDZlYS_1778882671507"
-          title="Book a call with Velocity Web Studio"></iframe>
+        <!-- Start of Meetings Embed Script -->
+        <div
+          class="meetings-iframe-container"
+          data-src="https://meetings-na2.hubspot.com/velocity-web-studio?embed=true"
+        >
+        </div>
         <script
-          is:inline
-          src="https://api.velocitywebstudio.com/js/form_embed.js"
-          type="text/javascript"></script>
+          type="text/javascript"
+          src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"
+        ></script>
+        <!-- End of Meetings Embed Script -->
       </div>
     </div>
   </section>
